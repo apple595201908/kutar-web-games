@@ -1,0 +1,179 @@
+[
+  {
+    "source": "bad.wav",
+    "file": "bad.wav",
+    "sourceBytes": 10464,
+    "sourceSha256": "b1eda236b54ee40376b7b590e6515e3f2e2397be1028c2935742d915bf3e3b79",
+    "dimensions": null
+  },
+  {
+    "source": "BG1.bmp",
+    "file": "bg1.png",
+    "sourceBytes": 555878,
+    "sourceSha256": "e4ef5c0c6b06c9dc3a8e60a908b93eb7cc266762e2e6bea67645a76a661e2fc8",
+    "dimensions": [
+      400,
+      1387
+    ]
+  },
+  {
+    "source": "BG2.bmp",
+    "file": "bg2.png",
+    "sourceBytes": 399080,
+    "sourceSha256": "e6f8efd87c9557ba8f830c4ae5d40f77b75daad270ce7768f43893f5b0422287",
+    "dimensions": [
+      400,
+      995
+    ]
+  },
+  {
+    "source": "bonus.wav",
+    "file": "bonus.wav",
+    "sourceBytes": 52072,
+    "sourceSha256": "879073932f7635acbfa7caba2be0989bbca81492457a5622baea99e2785eda5a",
+    "dimensions": null
+  },
+  {
+    "source": "cursor.bmp",
+    "file": "cursor.png",
+    "sourceBytes": 7478,
+    "sourceSha256": "f3b8086a28c2c80a1bb32e6ccd1a00fa8209febd594ea2c1f7a1a19608cdbc7c",
+    "dimensions": [
+      400,
+      16
+    ]
+  },
+  {
+    "source": "gigalogo.bmp",
+    "file": "gigalogo.png",
+    "sourceBytes": 33078,
+    "sourceSha256": "af04dbc45cb7d45cd2354231de7e2e1903042e1c9118b4082d554931bd7588dc",
+    "dimensions": [
+      400,
+      80
+    ]
+  },
+  {
+    "source": "Go.wav",
+    "file": "go.wav",
+    "sourceBytes": 16816,
+    "sourceSha256": "6730ef51d6b51fc2729be24fd1919fa239a217f9c886c73b72a06c468a658967",
+    "dimensions": null
+  },
+  {
+    "source": "Kursol.bmp",
+    "file": "kursol.png",
+    "sourceBytes": 1590,
+    "sourceSha256": "b36f57cc78990579ae99752d4b9c30bcbf04297fc87186522e71de4a94f5cb6b",
+    "dimensions": [
+      32,
+      16
+    ]
+  },
+  {
+    "source": "kutar_1.bmp",
+    "file": "kutar_1.png",
+    "sourceBytes": 510678,
+    "sourceSha256": "613fe6d41bc8ad2b1b10105c2e6592df0b5d16f472c5379a0c8abf2f709594ea",
+    "dimensions": [
+      400,
+      1274
+    ]
+  },
+  {
+    "source": "kutar_2.bmp",
+    "file": "kutar_2.png",
+    "sourceBytes": 312678,
+    "sourceSha256": "ba264e27fefb4a16b17f5f2a4740b16be30c45cab01778801de09112328d7964",
+    "dimensions": [
+      400,
+      779
+    ]
+  },
+  {
+    "source": "kutar_3.bmp",
+    "file": "kutar_3.png",
+    "sourceBytes": 240278,
+    "sourceSha256": "246125914542fc35d93a863fc904c96f85d149b8149088a8308256695c154e79",
+    "dimensions": [
+      400,
+      598
+    ]
+  },
+  {
+    "source": "kyu.wav",
+    "file": "kyu.wav",
+    "sourceBytes": 3988,
+    "sourceSha256": "7f9c3cf30f262b3f84e438386c494eabfd8bc19317ddfb5e242f0722d8d39b5e",
+    "dimensions": null
+  },
+  {
+    "source": "logo1.wav",
+    "file": "logo1.wav",
+    "sourceBytes": 10339,
+    "sourceSha256": "80c1432a59e7b00df1548f9168092ee5b13e5f08c535b58499a770d6ba6defdd",
+    "dimensions": null
+  },
+  {
+    "source": "logo2.wav",
+    "file": "logo2.wav",
+    "sourceBytes": 9574,
+    "sourceSha256": "b6519506b1ca1102626df189f83fabfddf467357110bcbf41aa87a5cf9700d56",
+    "dimensions": null
+  },
+  {
+    "source": "parts.bmp",
+    "file": "parts.png",
+    "sourceBytes": 74280,
+    "sourceSha256": "c686b6beeb3b47b13bf9b1ea1f7375a0743af18c346ada276546b14e5bcacfd7",
+    "dimensions": [
+      400,
+      183
+    ]
+  },
+  {
+    "source": "Puu.wav",
+    "file": "puu.wav",
+    "sourceBytes": 6303,
+    "sourceSha256": "4b88fc83d6c05d06fda1ac6f0664d6156944ccb4afcfe2d89ec2431242e106e0",
+    "dimensions": null
+  },
+  {
+    "source": "ready.wav",
+    "file": "ready.wav",
+    "sourceBytes": 18297,
+    "sourceSha256": "3c6a421113e3584fff9579fbaa57f83f92e4c31a8006c994ced0d4439216b042",
+    "dimensions": null
+  },
+  {
+    "source": "signal.wav",
+    "file": "signal.wav",
+    "sourceBytes": 1646,
+    "sourceSha256": "095545cbd8a9467c3ee0a9a2fa4252eb3c4fcf813d0d1b878413113ae6eda2a8",
+    "dimensions": null
+  },
+  {
+    "source": "title.bmp",
+    "file": "title.png",
+    "sourceBytes": 121078,
+    "sourceSha256": "00bc68bc17928be2257a37945e62988e0e737d9bcfefe14590f5f755b16e123a",
+    "dimensions": [
+      400,
+      300
+    ]
+  },
+  {
+    "source": "chit.wav",
+    "file": "chit.wav",
+    "sourceBytes": 3366,
+    "sourceSha256": "2c66af11d40aacecdbbe6732b33c94d5856cc346f4b589b84e9212bcbecb6b64",
+    "dimensions": null
+  },
+  {
+    "source": "musabgm.wav",
+    "file": "musabgm.wav",
+    "sourceBytes": 438306,
+    "sourceSha256": "732b4deb6576bd3194476104b4b93d16abe26ed70d092b3943276450652817a6",
+    "dimensions": null
+  }
+]

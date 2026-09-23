@@ -1,0 +1,61 @@
+[
+  {
+    "source": "ready.wav",
+    "file": "ready.wav",
+    "sourceBytes": 16174,
+    "sourceSha256": "13a8460c42746b24cb105e75faf5a34907ed9fed03154ae9fba14d1e326fba5a",
+    "dimensions": null
+  },
+  {
+    "source": "spew.wav",
+    "file": "spew.wav",
+    "sourceBytes": 7374,
+    "sourceSha256": "bf1e746150868c88f0a125c1d629edb6d5818645b517c60da6adae098a122c72",
+    "dimensions": null
+  },
+  {
+    "source": "bgm.wav",
+    "file": "bgm.wav",
+    "sourceBytes": 139688,
+    "sourceSha256": "e1ebd534b23d7f6658a0ec37b655c35ed0178eb9a2daf0b4bc57576d8429d6c7",
+    "dimensions": null
+  },
+  {
+    "source": "all.bmp",
+    "file": "all.png",
+    "sourceBytes": 573878,
+    "sourceSha256": "5eb34be3f356942564dbd10d6165c246c64a6cd823997ca80965adffd5e1dce5",
+    "dimensions": [
+      400,
+      1432
+    ]
+  },
+  {
+    "source": "go.wav",
+    "file": "go.wav",
+    "sourceBytes": 14694,
+    "sourceSha256": "4ec868ec3327b81413d5fce1c173d0d9e3b4a70ef9183868569a4d91eca539ff",
+    "dimensions": null
+  },
+  {
+    "source": "puha.wav",
+    "file": "puha.wav",
+    "sourceBytes": 24058,
+    "sourceSha256": "70872cb60b47169260a2fd64ea57ee600dec588eb4ddd691bc00b92c2ffe5525",
+    "dimensions": null
+  },
+  {
+    "source": "pu.wav",
+    "file": "pu.wav",
+    "sourceBytes": 6386,
+    "sourceSha256": "8fd86403f608ad72fed611be9ce23c36c2df3e9301dd05f6a380e9c2cc547d16",
+    "dimensions": null
+  },
+  {
+    "source": "gokkun.wav",
+    "file": "gokkun.wav",
+    "sourceBytes": 4520,
+    "sourceSha256": "75dc0d739eb51f550014dbf8d6a737eb55dd66713088b261bac7ec9d10f90ce9",
+    "dimensions": null
+  }
+]

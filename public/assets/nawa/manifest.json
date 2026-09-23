@@ -1,0 +1,47 @@
+[
+  {
+    "source": "se1.wav",
+    "file": "se1.wav",
+    "sourceBytes": 67478,
+    "sourceSha256": "3da4300a5213c0db4128a17a9d07650ac9e070ab0f220194f418f12c3224bb5c",
+    "dimensions": null
+  },
+  {
+    "source": "se5.wav",
+    "file": "se5.wav",
+    "sourceBytes": 13404,
+    "sourceSha256": "d0b986ec0b07a8ac92c4c4a45de29819e610bcb7d07ef8b0da7147b3ba0d568a",
+    "dimensions": null
+  },
+  {
+    "source": "se4.wav",
+    "file": "se4.wav",
+    "sourceBytes": 14694,
+    "sourceSha256": "4ec868ec3327b81413d5fce1c173d0d9e3b4a70ef9183868569a4d91eca539ff",
+    "dimensions": null
+  },
+  {
+    "source": "se2.wav",
+    "file": "se2.wav",
+    "sourceBytes": 6386,
+    "sourceSha256": "8fd86403f608ad72fed611be9ce23c36c2df3e9301dd05f6a380e9c2cc547d16",
+    "dimensions": null
+  },
+  {
+    "source": "se3.wav",
+    "file": "se3.wav",
+    "sourceBytes": 1728,
+    "sourceSha256": "49c1d22390b9858bff6d942bb8a3ae9f2d0a0e4d5135c1835562673b05662fad",
+    "dimensions": null
+  },
+  {
+    "source": "All.bmp",
+    "file": "all.png",
+    "sourceBytes": 443478,
+    "sourceSha256": "3e5f76b8a44ec99d396e7194acad8c6021808eade08277a5771120bccd56c94b",
+    "dimensions": [
+      400,
+      1106
+    ]
+  }
+]

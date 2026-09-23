@@ -1,0 +1,102 @@
+{
+  "balloon": {
+    "exeSha256": "8dc77cabdf06c11e57028237285ebceb869d32f57207cfab966f02ca0402c9a4",
+    "exeBytes": 2932736,
+    "assetCount": 20
+  },
+  "chan": {
+    "exeSha256": "a058eb98455a95dbfdf82ba1a70c4fb46e515305f3ba7426d355599679b4deaa",
+    "exeBytes": 5009408,
+    "assetCount": 25
+  },
+  "concert": {
+    "exeSha256": "e7b74049c601b923c433102f1ee953b4bcbb9a661c57c9c4517e4f1bac0ba13a",
+    "exeBytes": 6062080,
+    "assetCount": 28
+  },
+  "endroll": {
+    "exeSha256": "4e1671d83ef20feac0fd166b0ead52305dfc352d129e7060bff7d3f455559ff5",
+    "exeBytes": 6180864,
+    "assetCount": 31
+  },
+  "HipDance": {
+    "exeSha256": "c39889f9e875613eeff751528ccf188acd83e0e8c45b5150bc4561edfdf99aba",
+    "exeBytes": 2379776,
+    "assetCount": 18
+  },
+  "hvst": {
+    "exeSha256": "25aad6b7a8447738e5b7e0a9fd2863fd9b18c233160f2387780a461905750f97",
+    "exeBytes": 4567040,
+    "assetCount": 16
+  },
+  "ikki": {
+    "exeSha256": "d115cbe3b5500680d0ce505017e6f1ebfc688e83799438c074e3ca6c2ce17fa9",
+    "exeBytes": 1216512,
+    "assetCount": 8
+  },
+  "kodomo": {
+    "exeSha256": "96d5820eba8830ef0a28a22654748965bb83b6e1723f2a35b4cb1b921f69335a",
+    "exeBytes": 4825088,
+    "assetCount": 34
+  },
+  "kona": {
+    "exeSha256": "04534e8210a0cbdb1c1386cae5cbd5d3906fb7875566bdeaaaceff12ec38478d",
+    "exeBytes": 3375104,
+    "assetCount": 23
+  },
+  "lift": {
+    "exeSha256": "cd8d9498d89974d7ae5c530d5e6069c7db7918892e845eab85d67c1e4f83b8ac",
+    "exeBytes": 2035712,
+    "assetCount": 12
+  },
+  "makyu": {
+    "exeSha256": "6f80ac6a1684ada4f250cab25680de0e65f4895f778c1788f04f3d88ea18cb87",
+    "exeBytes": 2928640,
+    "assetCount": 23
+  },
+  "manu": {
+    "exeSha256": "7868ed25332d462d3284eb2836332c7cab5ca63cf9b2894841192b6a63c06c6e",
+    "exeBytes": 5206016,
+    "assetCount": 29
+  },
+  "musa": {
+    "exeSha256": "edf8846cd928f8938a0ba3b1cd6c4c58c7c72bc8f1aec3c7efd40c43769fb3ef",
+    "exeBytes": 3510272,
+    "assetCount": 21
+  },
+  "nawa": {
+    "exeSha256": "c1c328101779a8e552b9364e67b73dd40f7b64370806c46ce147526d21825b7c",
+    "exeBytes": 970752,
+    "assetCount": 6
+  },
+  "rocket": {
+    "exeSha256": "a35d521aed07720308f337310bb33add972cf5730b6bd7e7740423d988c2f4b4",
+    "exeBytes": 4128768,
+    "assetCount": 28
+  },
+  "rodeo": {
+    "exeSha256": "fc33a785cc45dcbe35c3140d247b0dc6e0d5ca8481771ba01259c3bd9457754b",
+    "exeBytes": 2359296,
+    "assetCount": 9
+  },
+  "santa": {
+    "exeSha256": "4c22bec84c2290af413c65313f4514e04e1c0752c87e7beb5072bd9dfa9b9c06",
+    "exeBytes": 2502656,
+    "assetCount": 24
+  },
+  "t-shirt": {
+    "exeSha256": "a618a74c05cf8b583e78fd1bb85f7d4e47d3a3295610b93501291943afc1999f",
+    "exeBytes": 3588096,
+    "assetCount": 27
+  },
+  "tube": {
+    "exeSha256": "25a98e1a103c7443ff3da38b97cf44e774ce137e357d1883bf9d4f0729130e70",
+    "exeBytes": 1949696,
+    "assetCount": 21
+  },
+  "apple": {
+    "exeSha256": "a1615898d0c3dfa2c76d2f515f2bfeec8199253dc6ef5b40da9baa1c52fa2992",
+    "exeBytes": 3801088,
+    "assetCount": 25
+  }
+}

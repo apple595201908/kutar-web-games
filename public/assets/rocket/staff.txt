@@ -1,0 +1,80 @@
+
+&2
+KUTAR'S ROCKET
+
+STAFF
+
+
+
+&1
+GRAPHIC DESIGN
+
+&0
+C-MATSU
+
+
+&1
+PROGRAM
+SOUND
+
+&0
+YOSSY
+
+
+
+
+
+&2
+MINI GAME ENGINE VER3
+
+STAFF
+
+
+
+&1
+RESOURCE DESIGN
+
+&0
+DICE-K
+
+
+&1
+ENGINE PROGRAM
+
+&0
+YOSSY
+
+
+
+
+
+&1
+KUTAR CHR DESIGN
+
+&0
+RANAS
+
+
+
+
+
+
+
+
+
+
+&2
+COPYRIGHT 2001
+GIGA-RENSYA
+ALL RIGHTS RESERVED
+
+
+
+
+
+
+
+
+
+
+####################

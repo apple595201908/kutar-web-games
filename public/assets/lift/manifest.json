@@ -1,0 +1,101 @@
+[
+  {
+    "source": "READY.WAV",
+    "file": "ready.wav",
+    "sourceBytes": 16174,
+    "sourceSha256": "13a8460c42746b24cb105e75faf5a34907ed9fed03154ae9fba14d1e326fba5a",
+    "dimensions": null
+  },
+  {
+    "source": "BGM.WAV",
+    "file": "bgm.wav",
+    "sourceBytes": 131724,
+    "sourceSha256": "2a7d7425ca6f103aabfcad7ff0f0c751d962b03a213fa5f05b1386062ded8cf2",
+    "dimensions": null
+  },
+  {
+    "source": "GO.WAV",
+    "file": "go.wav",
+    "sourceBytes": 14694,
+    "sourceSha256": "4ec868ec3327b81413d5fce1c173d0d9e3b4a70ef9183868569a4d91eca539ff",
+    "dimensions": null
+  },
+  {
+    "source": "JUMP.WAV",
+    "file": "jump.wav",
+    "sourceBytes": 7374,
+    "sourceSha256": "bf1e746150868c88f0a125c1d629edb6d5818645b517c60da6adae098a122c72",
+    "dimensions": null
+  },
+  {
+    "source": "PU.WAV",
+    "file": "pu.wav",
+    "sourceBytes": 6386,
+    "sourceSha256": "8fd86403f608ad72fed611be9ce23c36c2df3e9301dd05f6a380e9c2cc547d16",
+    "dimensions": null
+  },
+  {
+    "source": "SIT.WAV",
+    "file": "sit.wav",
+    "sourceBytes": 1728,
+    "sourceSha256": "49c1d22390b9858bff6d942bb8a3ae9f2d0a0e4d5135c1835562673b05662fad",
+    "dimensions": null
+  },
+  {
+    "source": "Kutar2.bmp",
+    "file": "kutar2.png",
+    "sourceBytes": 217878,
+    "sourceSha256": "321dad22fd981df0be5a53576614d14a5fcc3fe7c7834ef8e5755cfcd79ac08a",
+    "dimensions": [
+      400,
+      542
+    ]
+  },
+  {
+    "source": "Kutar1.bmp",
+    "file": "kutar1.png",
+    "sourceBytes": 217878,
+    "sourceSha256": "bda202223b92cd5ceb7fb48ba39826323db28c5e87de3e57d544bcf85097d279",
+    "dimensions": [
+      400,
+      542
+    ]
+  },
+  {
+    "source": "BG.BMP",
+    "file": "bg.png",
+    "sourceBytes": 556678,
+    "sourceSha256": "649a83b95acd284d063e4cb62ba6f1f515ad2bd03073680e429ed6e184f1cb4f",
+    "dimensions": [
+      400,
+      1389
+    ]
+  },
+  {
+    "source": "Kutar3.bmp",
+    "file": "kutar3.png",
+    "sourceBytes": 217878,
+    "sourceSha256": "d59da1902811f1b0701fbb407a8764f72bf55e9b393efc73da6ff5702f2c19ae",
+    "dimensions": [
+      400,
+      542
+    ]
+  },
+  {
+    "source": "Kutar4.bmp",
+    "file": "kutar4.png",
+    "sourceBytes": 217878,
+    "sourceSha256": "8865321cc5faffa3f4638ebf07700706cf4b5871d34b8202c5134ae7250921b5",
+    "dimensions": [
+      400,
+      542
+    ]
+  },
+  {
+    "source": "boo.wav",
+    "file": "boo.wav",
+    "sourceBytes": 2142,
+    "sourceSha256": "ce182450c2b361e571aa130b7efdfad82af84c5209dd105189ef02b0b21c988f",
+    "dimensions": null
+  }
+]

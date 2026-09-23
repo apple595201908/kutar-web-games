@@ -1,0 +1,138 @@
+[
+  {
+    "source": "Go.wav",
+    "file": "go.wav",
+    "sourceBytes": 16816,
+    "sourceSha256": "6730ef51d6b51fc2729be24fd1919fa239a217f9c886c73b72a06c468a658967",
+    "dimensions": null
+  },
+  {
+    "source": "logo2.wav",
+    "file": "logo2.wav",
+    "sourceBytes": 9574,
+    "sourceSha256": "b6519506b1ca1102626df189f83fabfddf467357110bcbf41aa87a5cf9700d56",
+    "dimensions": null
+  },
+  {
+    "source": "logo1.wav",
+    "file": "logo1.wav",
+    "sourceBytes": 10339,
+    "sourceSha256": "80c1432a59e7b00df1548f9168092ee5b13e5f08c535b58499a770d6ba6defdd",
+    "dimensions": null
+  },
+  {
+    "source": "bgm.wav",
+    "file": "bgm.wav",
+    "sourceBytes": 117734,
+    "sourceSha256": "095e9443f0de5a4864f27081c8ad448fad7572bf8a26ea2e788680b93ea10dc2",
+    "dimensions": null
+  },
+  {
+    "source": "Puu.wav",
+    "file": "puu.wav",
+    "sourceBytes": 6303,
+    "sourceSha256": "4b88fc83d6c05d06fda1ac6f0664d6156944ccb4afcfe2d89ec2431242e106e0",
+    "dimensions": null
+  },
+  {
+    "source": "bonus.wav",
+    "file": "bonus.wav",
+    "sourceBytes": 52072,
+    "sourceSha256": "879073932f7635acbfa7caba2be0989bbca81492457a5622baea99e2785eda5a",
+    "dimensions": null
+  },
+  {
+    "source": "combine.bmp",
+    "file": "combine.png",
+    "sourceBytes": 281078,
+    "sourceSha256": "b3a3453d55b0d4b9cf792c300a239e3e628feda7176a3349a4556fe120b4bd81",
+    "dimensions": [
+      400,
+      700
+    ]
+  },
+  {
+    "source": "jama_kutar.bmp",
+    "file": "jama_kutar.png",
+    "sourceBytes": 738678,
+    "sourceSha256": "8ce7bcc2db05f167d40d79c5de9f3d5b952a33b020a85e2b43fe29b70aa3f717",
+    "dimensions": [
+      400,
+      1844
+    ]
+  },
+  {
+    "source": "parts.bmp",
+    "file": "parts.png",
+    "sourceBytes": 634278,
+    "sourceSha256": "69faed4ac47edd96f2899b5bb3e9121255880f07b46b647fefb903a06d1d6e2a",
+    "dimensions": [
+      400,
+      1583
+    ]
+  },
+  {
+    "source": "yama1.bmp",
+    "file": "yama1.png",
+    "sourceBytes": 42678,
+    "sourceSha256": "3272303a87453097eca59a6c444a05a29f670799832951289a1e87076777f15d",
+    "dimensions": [
+      400,
+      104
+    ]
+  },
+  {
+    "source": "yama2.bmp",
+    "file": "yama2.png",
+    "sourceBytes": 42678,
+    "sourceSha256": "b378ab7b1b6f27f524d43a5e53a35d69ba64578ba6e7b19a203c494f947b1ad5",
+    "dimensions": [
+      400,
+      104
+    ]
+  },
+  {
+    "source": "jama_big.bmp",
+    "file": "jama_big.png",
+    "sourceBytes": 1710278,
+    "sourceSha256": "17adcef92aa8d914eb91e4ad4fdfc5c1f69b8e1cf447befaa5222c6b6f9ed833",
+    "dimensions": [
+      400,
+      4273
+    ]
+  },
+  {
+    "source": "jama_iwa.bmp",
+    "file": "jama_iwa.png",
+    "sourceBytes": 169878,
+    "sourceSha256": "604d5e0f5f4fd3d33c09744ff68d0e2f17150d4333b2683d097bf87ab42d1d54",
+    "dimensions": [
+      400,
+      422
+    ]
+  },
+  {
+    "source": "gigalogo.bmp",
+    "file": "gigalogo.png",
+    "sourceBytes": 33078,
+    "sourceSha256": "af04dbc45cb7d45cd2354231de7e2e1903042e1c9118b4082d554931bd7588dc",
+    "dimensions": [
+      400,
+      80
+    ]
+  },
+  {
+    "source": "ready.wav",
+    "file": "ready.wav",
+    "sourceBytes": 18297,
+    "sourceSha256": "3c6a421113e3584fff9579fbaa57f83f92e4c31a8006c994ced0d4439216b042",
+    "dimensions": null
+  },
+  {
+    "source": "hit.wav",
+    "file": "hit.wav",
+    "sourceBytes": 4353,
+    "sourceSha256": "51f3ce873679dcc78d1327ee602425eb28b33d35c3f77b4aae85964037ca0367",
+    "dimensions": null
+  }
+]

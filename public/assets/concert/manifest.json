@@ -1,0 +1,243 @@
+[
+  {
+    "source": "bakuhatsu.bmp",
+    "file": "bakuhatsu.png",
+    "sourceBytes": 138678,
+    "sourceSha256": "75e5abbc2dc6bad5121e8c5e9e0a207f0361c42ffbfadd7dc3a9e884e831b699",
+    "dimensions": [
+      400,
+      344
+    ]
+  },
+  {
+    "source": "BG.bmp",
+    "file": "bg.png",
+    "sourceBytes": 361080,
+    "sourceSha256": "f742ca6210853d26bb2e6ddf3092a51e9f2658272162847a9fb83629d174e6b6",
+    "dimensions": [
+      400,
+      900
+    ]
+  },
+  {
+    "source": "bgm01.wav",
+    "file": "bgm01.wav",
+    "sourceBytes": 549752,
+    "sourceSha256": "bc26d125ae4ff720b25dbe6139841cec931765712197507a14606b176e3c7993",
+    "dimensions": null
+  },
+  {
+    "source": "bgm02.wav",
+    "file": "bgm02.wav",
+    "sourceBytes": 423352,
+    "sourceSha256": "ea956134316199c523cf8fb1852088886676623775138eabdac0623c0b6d9c4b",
+    "dimensions": null
+  },
+  {
+    "source": "BG_butai1.bmp",
+    "file": "bg_butai1.png",
+    "sourceBytes": 129190,
+    "sourceSha256": "d8bad25a77c7d3acaaa38d7cd7cf1020cceedc51f4b49aaf92a87c3de7293cda",
+    "dimensions": [
+      272,
+      471
+    ]
+  },
+  {
+    "source": "bonus.wav",
+    "file": "bonus.wav",
+    "sourceBytes": 52072,
+    "sourceSha256": "879073932f7635acbfa7caba2be0989bbca81492457a5622baea99e2785eda5a",
+    "dimensions": null
+  },
+  {
+    "source": "boo.wav",
+    "file": "boo.wav",
+    "sourceBytes": 10546,
+    "sourceSha256": "2b6dad370bb9e7452fcf1883134b5a5920d0b2210c3490a7348d89dc257304ac",
+    "dimensions": null
+  },
+  {
+    "source": "dmy.wav",
+    "file": "dmy.wav",
+    "sourceBytes": 110376,
+    "sourceSha256": "b26baa97b7b1895c6db7faf70cefae208ba2abc79ca5bc7c9da386a362dc36e3",
+    "dimensions": null
+  },
+  {
+    "source": "gigalogo.bmp",
+    "file": "gigalogo.png",
+    "sourceBytes": 33078,
+    "sourceSha256": "af04dbc45cb7d45cd2354231de7e2e1903042e1c9118b4082d554931bd7588dc",
+    "dimensions": [
+      400,
+      80
+    ]
+  },
+  {
+    "source": "Go.wav",
+    "file": "go.wav",
+    "sourceBytes": 29996,
+    "sourceSha256": "03a36c67ab5dfc3d644f363ed66cd097f0f07caca93279c3c74ed2acc02eddc3",
+    "dimensions": null
+  },
+  {
+    "source": "kamifubuki.bmp",
+    "file": "kamifubuki.png",
+    "sourceBytes": 685078,
+    "sourceSha256": "3bca45f8431b8f66174e7b1db26abe1949e5f88d1466f4ebd9bbf940488a70f8",
+    "dimensions": [
+      400,
+      1710
+    ]
+  },
+  {
+    "source": "kashu.bmp",
+    "file": "kashu.png",
+    "sourceBytes": 323078,
+    "sourceSha256": "e514e1a651c75dddc962136b080cd018f9214eb83cc8e32884dc021082ca8517",
+    "dimensions": [
+      400,
+      805
+    ]
+  },
+  {
+    "source": "kutar.bmp",
+    "file": "kutar.png",
+    "sourceBytes": 172278,
+    "sourceSha256": "ff13440df47b373c38242d6d5077c7cf171f7c2678810b0e2b0c7b6a145715fb",
+    "dimensions": [
+      400,
+      428
+    ]
+  },
+  {
+    "source": "kutar.wav",
+    "file": "kutar.wav",
+    "sourceBytes": 4782,
+    "sourceSha256": "7abc35a5e147e8ffb1d62b6a473bc37d869b24e429099e1ff08761082b969041",
+    "dimensions": null
+  },
+  {
+    "source": "kyaku1.bmp",
+    "file": "kyaku1.png",
+    "sourceBytes": 372278,
+    "sourceSha256": "4f599922cf5969ed6daa9a4df312c443e9f954d1cbafa73aeb3f6aa55d0b4c00",
+    "dimensions": [
+      400,
+      928
+    ]
+  },
+  {
+    "source": "kyaku2.bmp",
+    "file": "kyaku2.png",
+    "sourceBytes": 372278,
+    "sourceSha256": "9e53ec6f5069417274a6ddaffa15b5f69f34778e9402bb4e746cdd6d96a5160a",
+    "dimensions": [
+      400,
+      928
+    ]
+  },
+  {
+    "source": "kyaku3.bmp",
+    "file": "kyaku3.png",
+    "sourceBytes": 372278,
+    "sourceSha256": "dd33c0855bf40d7d665058dce95fb66c260911ed7d0a5b8e0faba823c06b1aa2",
+    "dimensions": [
+      400,
+      928
+    ]
+  },
+  {
+    "source": "kyaku4.bmp",
+    "file": "kyaku4.png",
+    "sourceBytes": 372278,
+    "sourceSha256": "bb30ac0c3ebcb77f3dbc5e73f1539b4dd2795c25c4ac943d3df4a7d6fc076ded",
+    "dimensions": [
+      400,
+      928
+    ]
+  },
+  {
+    "source": "kyaku_rare.bmp",
+    "file": "kyaku_rare.png",
+    "sourceBytes": 372278,
+    "sourceSha256": "f7d05395d8f03ec35d4b7093c58aa53094cc295bcc80a123e3aec0205cd0ecf4",
+    "dimensions": [
+      400,
+      928
+    ]
+  },
+  {
+    "source": "logo1.wav",
+    "file": "logo1.wav",
+    "sourceBytes": 21932,
+    "sourceSha256": "1f1034c798a5676b3e912d2d2be5e7c97233ba4df69a6ff022c35b2d33b0c818",
+    "dimensions": null
+  },
+  {
+    "source": "logo2.wav",
+    "file": "logo2.wav",
+    "sourceBytes": 49580,
+    "sourceSha256": "bb466f1b107c31ba2fc3b742a5292915d9ae1583e3121479167f1af144de65ae",
+    "dimensions": null
+  },
+  {
+    "source": "ok1.wav",
+    "file": "ok1.wav",
+    "sourceBytes": 5114,
+    "sourceSha256": "a67992763ac72bafa8b61936bbfd1a061d0af7487138a304594461896806ee64",
+    "dimensions": null
+  },
+  {
+    "source": "parts.bmp",
+    "file": "parts.png",
+    "sourceBytes": 90678,
+    "sourceSha256": "d4c14733119850c1fa9dfd8aa9b2fe3ad257cc94b619abe434109912cf28c99b",
+    "dimensions": [
+      400,
+      224
+    ]
+  },
+  {
+    "source": "Puu.wav",
+    "file": "puu.wav",
+    "sourceBytes": 23530,
+    "sourceSha256": "5101108e187d7cd9445aed1cb2526801fc981ac6bed7d9918265e791e350e24e",
+    "dimensions": null
+  },
+  {
+    "source": "rare.bmp",
+    "file": "rare.png",
+    "sourceBytes": 10678,
+    "sourceSha256": "780426d6c0bfc44ba1ef4e7311a54313a84de3ec141b87966abf79e683b0988d",
+    "dimensions": [
+      400,
+      24
+    ]
+  },
+  {
+    "source": "ready.wav",
+    "file": "ready.wav",
+    "sourceBytes": 29996,
+    "sourceSha256": "7afd9f66f837e973d3c833a6593ecea0d2eb1f2f91608bbdb50521064f016741",
+    "dimensions": null
+  },
+  {
+    "source": "se01.wav",
+    "file": "se01.wav",
+    "sourceBytes": 146220,
+    "sourceSha256": "2d6acd35fa066dfd67b562b4f606fbfd751603b9aaa58678d4bffa871eb9df19",
+    "dimensions": null
+  },
+  {
+    "source": "title.bmp",
+    "file": "title.png",
+    "sourceBytes": 121080,
+    "sourceSha256": "ec4d3f85fdf2b0ee9235e7724f6e63d54ed4bb4275b032efd105fb21fc84a65f",
+    "dimensions": [
+      400,
+      300
+    ]
+  }
+]

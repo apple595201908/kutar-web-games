@@ -1,0 +1,259 @@
+[
+  {
+    "source": "bg.bmp",
+    "file": "bg.png",
+    "sourceBytes": 121078,
+    "sourceSha256": "85b1f596e5a0bb606265c70d7e18e57986b2ffc3172d36b4a5ff0fb62f998f33",
+    "dimensions": [
+      400,
+      300
+    ]
+  },
+  {
+    "source": "body1.bmp",
+    "file": "body1.png",
+    "sourceBytes": 305078,
+    "sourceSha256": "3c62493d8bef5384f8a47baae0034317eff8decf1eb6a51f4bb08dd6d4efc093",
+    "dimensions": [
+      400,
+      760
+    ]
+  },
+  {
+    "source": "cursor.bmp",
+    "file": "cursor.png",
+    "sourceBytes": 7478,
+    "sourceSha256": "f3b8086a28c2c80a1bb32e6ccd1a00fa8209febd594ea2c1f7a1a19608cdbc7c",
+    "dimensions": [
+      400,
+      16
+    ]
+  },
+  {
+    "source": "gigalogo.bmp",
+    "file": "gigalogo.png",
+    "sourceBytes": 33078,
+    "sourceSha256": "af04dbc45cb7d45cd2354231de7e2e1903042e1c9118b4082d554931bd7588dc",
+    "dimensions": [
+      400,
+      80
+    ]
+  },
+  {
+    "source": "Go.wav",
+    "file": "go.wav",
+    "sourceBytes": 16816,
+    "sourceSha256": "6730ef51d6b51fc2729be24fd1919fa239a217f9c886c73b72a06c468a658967",
+    "dimensions": null
+  },
+  {
+    "source": "head1.bmp",
+    "file": "head1.png",
+    "sourceBytes": 133878,
+    "sourceSha256": "e8233816c46eb7b2020d8e25cfcaf95bf5abe82077a0dc5347bbe3341acb21d4",
+    "dimensions": [
+      400,
+      332
+    ]
+  },
+  {
+    "source": "item1.bmp",
+    "file": "item1.png",
+    "sourceBytes": 81078,
+    "sourceSha256": "0cab324ad13be91eff936dde36463e1d19f2b131b7b665f30d21ddffd7c18068",
+    "dimensions": [
+      400,
+      200
+    ]
+  },
+  {
+    "source": "logo1.wav",
+    "file": "logo1.wav",
+    "sourceBytes": 10339,
+    "sourceSha256": "80c1432a59e7b00df1548f9168092ee5b13e5f08c535b58499a770d6ba6defdd",
+    "dimensions": null
+  },
+  {
+    "source": "logo2.wav",
+    "file": "logo2.wav",
+    "sourceBytes": 9574,
+    "sourceSha256": "b6519506b1ca1102626df189f83fabfddf467357110bcbf41aa87a5cf9700d56",
+    "dimensions": null
+  },
+  {
+    "source": "number.bmp",
+    "file": "number.png",
+    "sourceBytes": 17078,
+    "sourceSha256": "d7fc4e28151a0a89ebc2cc0ce52ce0e9876754eeeacb810ab15cf90aa731a888",
+    "dimensions": [
+      400,
+      40
+    ]
+  },
+  {
+    "source": "parts.bmp",
+    "file": "parts.png",
+    "sourceBytes": 23078,
+    "sourceSha256": "5edb62f1cae68bd10d8e5b263f05f427e7f9821d01e5bf4467cabc610b9e657e",
+    "dimensions": [
+      400,
+      55
+    ]
+  },
+  {
+    "source": "Puu.wav",
+    "file": "puu.wav",
+    "sourceBytes": 6303,
+    "sourceSha256": "4b88fc83d6c05d06fda1ac6f0664d6156944ccb4afcfe2d89ec2431242e106e0",
+    "dimensions": null
+  },
+  {
+    "source": "ready.wav",
+    "file": "ready.wav",
+    "sourceBytes": 18297,
+    "sourceSha256": "3c6a421113e3584fff9579fbaa57f83f92e4c31a8006c994ced0d4439216b042",
+    "dimensions": null
+  },
+  {
+    "source": "ready_go.bmp",
+    "file": "ready_go.png",
+    "sourceBytes": 61878,
+    "sourceSha256": "2bca3c01b1152915f3e0d90e1d45ffbab85d4b526da9df929c858bde3cb28a1f",
+    "dimensions": [
+      400,
+      152
+    ]
+  },
+  {
+    "source": "title.bmp",
+    "file": "title.png",
+    "sourceBytes": 121078,
+    "sourceSha256": "66556b443893e842aef520bd57425806a2c7f6fe80b1abe255a86040a714a443",
+    "dimensions": [
+      400,
+      300
+    ]
+  },
+  {
+    "source": "bad.wav",
+    "file": "bad.wav",
+    "sourceBytes": 10464,
+    "sourceSha256": "b1eda236b54ee40376b7b590e6515e3f2e2397be1028c2935742d915bf3e3b79",
+    "dimensions": null
+  },
+  {
+    "source": "bgm.wav",
+    "file": "bgm.wav",
+    "sourceBytes": 124450,
+    "sourceSha256": "5cb63c47ed5fe7aa1be6dd4a0818d6dec4cc2de5407a2621abce4f831ea18655",
+    "dimensions": null
+  },
+  {
+    "source": "bgm2.wav",
+    "file": "bgm2.wav",
+    "sourceBytes": 471170,
+    "sourceSha256": "cb2aafd754e79ba3654468ebd6fa0944ed112ffff7be94448759ab98074df4b7",
+    "dimensions": null
+  },
+  {
+    "source": "signal.wav",
+    "file": "signal.wav",
+    "sourceBytes": 1646,
+    "sourceSha256": "095545cbd8a9467c3ee0a9a2fa4252eb3c4fcf813d0d1b878413113ae6eda2a8",
+    "dimensions": null
+  },
+  {
+    "source": "kyu.wav",
+    "file": "kyu.wav",
+    "sourceBytes": 3988,
+    "sourceSha256": "7f9c3cf30f262b3f84e438386c494eabfd8bc19317ddfb5e242f0722d8d39b5e",
+    "dimensions": null
+  },
+  {
+    "source": "bonus.wav",
+    "file": "bonus.wav",
+    "sourceBytes": 52072,
+    "sourceSha256": "879073932f7635acbfa7caba2be0989bbca81492457a5622baea99e2785eda5a",
+    "dimensions": null
+  },
+  {
+    "source": "3r.bmp",
+    "file": "3r.png",
+    "sourceBytes": 361078,
+    "sourceSha256": "41b12b49172fef3e7ac8c66ab95643b84bfba2b9ff03d60858b981a02d9d6d34",
+    "dimensions": [
+      400,
+      900
+    ]
+  },
+  {
+    "source": "1r.bmp",
+    "file": "1r.png",
+    "sourceBytes": 361078,
+    "sourceSha256": "e4f0cb4143922da9cfefdba6894c2447dc6ee63ec06ad2717d51d8848c3aec69",
+    "dimensions": [
+      400,
+      900
+    ]
+  },
+  {
+    "source": "2.bmp",
+    "file": "2.png",
+    "sourceBytes": 361078,
+    "sourceSha256": "bd39be6f7e2da4d461208e4bcbf432c8d7c8db57206720df9965f4c521a25401",
+    "dimensions": [
+      400,
+      900
+    ]
+  },
+  {
+    "source": "2r.bmp",
+    "file": "2r.png",
+    "sourceBytes": 361078,
+    "sourceSha256": "c81972f0471e62a1d661802ecb4f1aa768c24a6ff88f2f2e84ee5b570cde4d3b",
+    "dimensions": [
+      400,
+      900
+    ]
+  },
+  {
+    "source": "3.bmp",
+    "file": "3.png",
+    "sourceBytes": 361078,
+    "sourceSha256": "029e7ed48caee674ad5651be4fe2be820ab5d5253cc3b646a6d9a88f06845714",
+    "dimensions": [
+      400,
+      900
+    ]
+  },
+  {
+    "source": "1.bmp",
+    "file": "1.png",
+    "sourceBytes": 361078,
+    "sourceSha256": "6bf5956af01a7fe45c08a3410068e404cd80a7be551520da3b24d0eb621735de",
+    "dimensions": [
+      400,
+      900
+    ]
+  },
+  {
+    "source": "4.bmp",
+    "file": "4.png",
+    "sourceBytes": 361078,
+    "sourceSha256": "6be303d62e2adbdcb49672c55e4a3d8e736be434ebfc749084da5d8b1f8cda01",
+    "dimensions": [
+      400,
+      900
+    ]
+  },
+  {
+    "source": "4r.bmp",
+    "file": "4r.png",
+    "sourceBytes": 361078,
+    "sourceSha256": "c6c362ec0984e5055b9484eb9e83c72c982e9d147fc9b234ebe11bd1cc5cde8d",
+    "dimensions": [
+      400,
+      900
+    ]
+  }
+]
