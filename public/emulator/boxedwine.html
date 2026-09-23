@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Kutar 遊戲</title>
+    <meta name="description" content="boxedwine emulator">
+    <meta name="keywords" content="emulator,wine,windows,x86,PC,emscripten,web assembly,wasm,boxedwine">
+    <meta name="author" content="James Bryant, Kevin O'Dwyer">
+      <link rel="stylesheet" type="text/css" href="boxedwine.css">
+      <style>
+        html, body { width: 406px; height: 365px; margin: 0; overflow: hidden; background: #396796; }
+        #chrome-controls, #output, hr { display: none !important; }
+        #dropzone, .emscripten_border { width: 406px; height: 365px; overflow: hidden; }
+        .emscripten_border { border: 0; }
+        canvas.emscripten { display: block; margin: 0; image-rendering: pixelated; touch-action: none; }
+        #loading { display: none !important; }
+      </style>
+  </head>
+  <body>
+  <div id="loading">
+      <figure id="spinner" style="overflow: visible;">
+         <div class="spinner" style="margin-top: .5em; margin-left: auto; margin-right: auto;"></div>
+	  </figure>
+      <div class="emscripten" id="status">Downloading...</div>
+      <div class="emscripten">
+          <progress value="0" max="100" id="progress"></progress>
+      </div>
+  </div>
+    <div>
+        <div class="emscripten" id="chrome-controls">
+            <button id="startbtn" style="display: none" onclick="start()">Start</button>
+            <button id="uploadbtn" style="display: none" onclick="document.getElementById('upload').click()" >Add File(s)</button>
+            <input style="display: none" id="upload" name="upload" onclick="document.getElementById('uploadbtn').click();" onchange="startWithFiles(event.target.files);"  type="file" multiple />
+            <button id="downloadbtn" style="display: none" onclick="buildGetFilesModal();">Get File(s)</button>
+            <a style="display: none" id="modalLink" href="#openModal">Open</a>
+            <a style="display: none" id="modalLinkExe" href="#openModalExe">Open</a>
+
+          <span id="sound-checkbox" style="display: none">
+              <input type="checkbox" id="soundToggle" onclick="toggleSound();" />Enable Sound
+          </span>
+          <input type="checkbox" id="pointerLock">Lock/hide mouse pointer
+          <input type="checkbox" id="showConsole" onclick="toggleConsole();">Show console
+          &nbsp;&nbsp;&nbsp;
+          <input type="checkbox" id="resize">Resize canvas
+          <input type="button" value="Fullscreen" onclick="Module.requestFullscreen(document.getElementById('pointerLock').checked, document.getElementById('resize').checked)">
+        </div>
+        <div id="dropzone">
+            <div class="emscripten_border">
+                <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
+            </div>
+        </div>
+        <div>
+            <textarea class="emscripten" id="output" rows="8" style="display: none"></textarea>
+        </div>
+        <div id="openModal" class="modalDialog">
+            <div> <a href="#close" title="Close" class="close" onclick="closeGetFilesModal();">X</a>
+                <div>
+                    <h3>Get File(s)</h3>
+                    <input id="selectedItem" type="text" size="50" readonly>
+                    <button onclick="extract();">Get</button>
+                </div>
+                <div id="tree" class="scroll-style">
+                </div>
+                <div>
+                    <h3 id="loadStatus">Loading...</h3>
+                </div>
+            </div>
+        </div>
+        <div id="openModalExe" class="modalDialog">
+            <div> <a id="openModalExeClick" href="#close" title="Close" class="close">X</a>
+                <div>
+                    <h3>Execute</h3>
+                    <div id="message"></div>
+                    <div id="items" class="scroll-style"></div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+        <script src="boxedwine-shell.js"></script>
+<script>
+  // SDL receives mouse input; map a direct screen touch to the same action.
+  const gameCanvas = document.getElementById('canvas');
+  let activeTouch = null;
+  function sendTouchMouse(type, touch, buttons) {
+    gameCanvas.dispatchEvent(new MouseEvent(type, {
+      bubbles: true, cancelable: true, button: 0, buttons,
+      clientX: touch.clientX, clientY: touch.clientY,
+    }));
+  }
+  gameCanvas.addEventListener('touchstart', event => {
+    if (activeTouch !== null) return;
+    const touch = event.changedTouches[0];
+    if (!touch) return;
+    event.preventDefault();
+    activeTouch = touch.identifier;
+    sendTouchMouse('mousemove', touch, 0);
+    sendTouchMouse('mousedown', touch, 1);
+  }, { passive: false });
+  gameCanvas.addEventListener('touchmove', event => {
+    const touch = Array.from(event.changedTouches).find(item => item.identifier === activeTouch);
+    if (!touch) return;
+    event.preventDefault();
+    sendTouchMouse('mousemove', touch, 1);
+  }, { passive: false });
+  for (const eventName of ['touchend', 'touchcancel']) {
+    gameCanvas.addEventListener(eventName, event => {
+      const touch = Array.from(event.changedTouches).find(item => item.identifier === activeTouch);
+      if (!touch) return;
+      event.preventDefault();
+      sendTouchMouse('mouseup', touch, 0);
+      activeTouch = null;
+    }, { passive: false });
+  }
+</script>
+<script async type="text/javascript" src="boxedwine.js"></script>
+  </body>
+</html>

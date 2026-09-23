@@ -7,3 +7,5 @@ dist/
 !.env.example
 __pycache__/
 *.pyc
+public/emulator/games/*.zip
+reference/emulator/

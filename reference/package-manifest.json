@@ -1,0 +1,122 @@
+{
+  "balloon": {
+    "archive": "balloon.zip",
+    "bytes": 644571,
+    "sha256": "5719282f9bc1614fd91ff8ca71e0bc3c13cccff192578f32acf86df8935f65ab",
+    "sourceSha256": "8dc77cabdf06c11e57028237285ebceb869d32f57207cfab966f02ca0402c9a4"
+  },
+  "chan": {
+    "archive": "chan.zip",
+    "bytes": 893086,
+    "sha256": "0d3d8db726b311dec8acfddfa911a67bcea2f85f6622696a0cea75d2af4505e5",
+    "sourceSha256": "a058eb98455a95dbfdf82ba1a70c4fb46e515305f3ba7426d355599679b4deaa"
+  },
+  "concert": {
+    "archive": "concert.zip",
+    "bytes": 1489743,
+    "sha256": "dbd69a4102840043e8cb8cdfb7522473025047bd5a3a93939fc4caf87f5a6f78",
+    "sourceSha256": "e7b74049c601b923c433102f1ee953b4bcbb9a661c57c9c4517e4f1bac0ba13a"
+  },
+  "endroll": {
+    "archive": "endroll.zip",
+    "bytes": 1277901,
+    "sha256": "da0aa62979dbd146729ac9ea481becf22c45b99c365541093436fc193406dab0",
+    "sourceSha256": "4e1671d83ef20feac0fd166b0ead52305dfc352d129e7060bff7d3f455559ff5"
+  },
+  "HipDance": {
+    "archive": "hipdance.zip",
+    "bytes": 702002,
+    "sha256": "c779256087cdd8abdb5ec5d91682cbab57e18ffd27a2b45e22a27ad0bccca527",
+    "sourceSha256": "c39889f9e875613eeff751528ccf188acd83e0e8c45b5150bc4561edfdf99aba"
+  },
+  "hvst": {
+    "archive": "hvst.zip",
+    "bytes": 637090,
+    "sha256": "3c8936c81d486d9fba06c4802a0884fc9c53dffc570eef988a3c887c9c2719e6",
+    "sourceSha256": "25aad6b7a8447738e5b7e0a9fd2863fd9b18c233160f2387780a461905750f97"
+  },
+  "ikki": {
+    "archive": "ikki.zip",
+    "bytes": 440256,
+    "sha256": "310a04489df40550835b8fd2d9c9ccd5650cd98a24a203e8ae38aa6ea7a65109",
+    "sourceSha256": "d115cbe3b5500680d0ce505017e6f1ebfc688e83799438c074e3ca6c2ce17fa9"
+  },
+  "kodomo": {
+    "archive": "kodomo.zip",
+    "bytes": 751120,
+    "sha256": "fefc7a5e89961d20446af5a035c0ecca1bd86624ed404f9618303403d599bf46",
+    "sourceSha256": "96d5820eba8830ef0a28a22654748965bb83b6e1723f2a35b4cb1b921f69335a"
+  },
+  "kona": {
+    "archive": "kona.zip",
+    "bytes": 1241480,
+    "sha256": "fb3560b255e3bfcfa95a9cfee93c0396eaa8802aa24959f5b48b312a7fe27852",
+    "sourceSha256": "04534e8210a0cbdb1c1386cae5cbd5d3906fb7875566bdeaaaceff12ec38478d"
+  },
+  "lift": {
+    "archive": "lift.zip",
+    "bytes": 449544,
+    "sha256": "5667576f886dece3aff77738d577886c77e8b668c46819dfc287457db3d5182f",
+    "sourceSha256": "cd8d9498d89974d7ae5c530d5e6069c7db7918892e845eab85d67c1e4f83b8ac"
+  },
+  "makyu": {
+    "archive": "makyu.zip",
+    "bytes": 650239,
+    "sha256": "c384c49b500ced25acfe26056f6c5d31388c6d32b81acf205145b6bb3e73ffb8",
+    "sourceSha256": "6f80ac6a1684ada4f250cab25680de0e65f4895f778c1788f04f3d88ea18cb87"
+  },
+  "manu": {
+    "archive": "manu.zip",
+    "bytes": 1025976,
+    "sha256": "2748ad76ee96e0cf0aaf5fe1f653fec58f052dd08e9f6fe6183a9791e7d35b5a",
+    "sourceSha256": "7868ed25332d462d3284eb2836332c7cab5ca63cf9b2894841192b6a63c06c6e"
+  },
+  "musa": {
+    "archive": "musa.zip",
+    "bytes": 902177,
+    "sha256": "0209086e8c75ba433887d3aac5396a8ad75d226204cc324a29a04d881a30b21a",
+    "sourceSha256": "edf8846cd928f8938a0ba3b1cd6c4c58c7c72bc8f1aec3c7efd40c43769fb3ef"
+  },
+  "nawa": {
+    "archive": "nawa.zip",
+    "bytes": 294445,
+    "sha256": "a714b44d6bd595a59275ab4cd849c93d35389c2d1d1b086548e648e19a185f74",
+    "sourceSha256": "c1c328101779a8e552b9364e67b73dd40f7b64370806c46ce147526d21825b7c"
+  },
+  "rocket": {
+    "archive": "rocket.zip",
+    "bytes": 982382,
+    "sha256": "d3866fc84e6215ffb6ade4009a7971258b7da5bddda663c35d0e8bb288e4f7aa",
+    "sourceSha256": "a35d521aed07720308f337310bb33add972cf5730b6bd7e7740423d988c2f4b4"
+  },
+  "rodeo": {
+    "archive": "rodeo.zip",
+    "bytes": 527031,
+    "sha256": "16e43f237dde7dcfd55ba9d8c9a0a6227b18355a395e14dc6e146de0a665e5ae",
+    "sourceSha256": "fc33a785cc45dcbe35c3140d247b0dc6e0d5ca8481771ba01259c3bd9457754b"
+  },
+  "santa": {
+    "archive": "santa.zip",
+    "bytes": 606957,
+    "sha256": "6ca2a62b6d0c3ad7d85a5481dd5499d6765c9567eb998edcb2b11efc4c77b155",
+    "sourceSha256": "4c22bec84c2290af413c65313f4514e04e1c0752c87e7beb5072bd9dfa9b9c06"
+  },
+  "t-shirt": {
+    "archive": "t-shirt.zip",
+    "bytes": 913076,
+    "sha256": "739f5d930bb8d40a4cdcb49a4e36c91b086e2f66859121f5f660234ddf18823a",
+    "sourceSha256": "a618a74c05cf8b583e78fd1bb85f7d4e47d3a3295610b93501291943afc1999f"
+  },
+  "tube": {
+    "archive": "tube.zip",
+    "bytes": 535779,
+    "sha256": "609a74b48d88f62087e5ea91c513f5bfcca636eca09941a97b07a436fa624c8a",
+    "sourceSha256": "25a98e1a103c7443ff3da38b97cf44e774ce137e357d1883bf9d4f0729130e70"
+  },
+  "apple": {
+    "archive": "apple.zip",
+    "bytes": 639815,
+    "sha256": "f82f646b3d047c313539d843662f474db3077f9ed7380a2057e3dac8e4b8c2d6",
+    "sourceSha256": "a1615898d0c3dfa2c76d2f515f2bfeec8199253dc6ef5b40da9baa1c52fa2992"
+  }
+}
