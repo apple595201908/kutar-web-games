@@ -54,7 +54,7 @@ function renderMenu() {
 
 function renderGame(game: Game) {
   document.title = `${game.name}｜Kutar 網頁遊戲大集合`
-  const src = asset(`emulator/boxedwine.html?app=${encodeURIComponent(game.id.toLowerCase())}&p=${encodeURIComponent(game.id + '.exe')}&resolution=406x365`)
+  const src = asset(`emulator/boxedwine.html?app=${encodeURIComponent(game.id.toLowerCase())}&p=${encodeURIComponent(game.id + '.exe')}&resolution=406x365&controls=${game.control}`)
   root.innerHTML = `
     <main class="play-page">
       <nav class="play-nav"><a class="back-link" href="${escapeHtml(gameUrl().toString())}" data-back>← 返回遊戲選單</a><span>KU<span class="brand-red">T</span>AR / ${escapeHtml(game.original)}</span></nav>
@@ -67,7 +67,7 @@ function renderGame(game: Game) {
             ${game.control === 'sides' ? `<div class="side-controls"><button data-action="left" type="button">← 左半邊</button><button data-action="right" type="button">右半邊 →</button></div>` : game.control === 'single' ? `<button class="action-button" data-action="tap" type="button">點按 / 動作</button>` : `<p class="direct-hint">請直接點選遊戲畫面中的目標</p>`}
           </div>
         </div>
-        <aside class="play-help"><div class="help-card"><p class="eyebrow">HOW TO PLAY</p><h2>操作方式</h2><p>${escapeHtml(game.description)}</p><p>先按遊戲視窗左上角的開始鍵，或使用下方「開始 / 重玩」。鍵盤與滑鼠可沿用原版操作；手機可點遊戲畫面或下方大按鍵。</p></div><div class="help-card mini"><span>原始畫面</span><strong>400 × 300</strong><span>完整等比例顯示</span></div></aside>
+        <aside class="play-help"><div class="help-card"><p class="eyebrow">HOW TO PLAY</p><h2>操作方式</h2><p>${escapeHtml(game.description)}</p><p>等原版標題畫面出現後，按「開始 / 重玩」或鍵盤 F5。鍵盤與滑鼠可沿用原版操作；手機可點遊戲畫面或下方大按鍵。</p></div><div class="help-card mini"><span>原始畫面</span><strong>400 × 300</strong><span>完整等比例顯示</span></div></aside>
       </div>
     </main>`
 
@@ -78,6 +78,7 @@ function renderGame(game: Game) {
   const controls = root.querySelector<HTMLElement>('.controls')!
   const pointers = new Map<number, string>()
   let readyTimer: number | undefined
+  let errorTimer: number | undefined
   let destroyed = false
 
   const resize = () => stage.style.setProperty('--scale', String(stage.clientWidth / 406))
@@ -106,14 +107,14 @@ function renderGame(game: Game) {
     canvas.dispatchEvent(event)
   }
   function action(name: string, down: boolean) {
-    if (name === 'start') { mouse(25, 44, down); return }
+    if (name === 'start') { key('F5', 116, down); return }
     if (name === 'left') { key('ArrowLeft', 37, down); mouse(100, 210, down); return }
     if (name === 'right') { key('ArrowRight', 39, down); mouse(306, 210, down); return }
     key(' ', 32, down)
     mouse(203, 210, down)
   }
   function releaseAll() {
-    for (const name of pointers.values()) action(name, false)
+    for (const name of new Set(pointers.values())) action(name, false)
     pointers.clear()
   }
   function pointerDown(event: PointerEvent) {
@@ -122,20 +123,25 @@ function renderGame(game: Game) {
     event.preventDefault()
     button.setPointerCapture(event.pointerId)
     const name = button.dataset.action!
+    if (pointers.has(event.pointerId)) return
+    const alreadyDown = [...pointers.values()].includes(name)
     pointers.set(event.pointerId, name)
-    action(name, true)
+    if (!alreadyDown) action(name, true)
   }
   function pointerUp(event: PointerEvent) {
     const name = pointers.get(event.pointerId)
     if (!name) return
     event.preventDefault()
-    action(name, false)
     pointers.delete(event.pointerId)
+    if (![...pointers.values()].includes(name)) action(name, false)
   }
   function visibility() { if (document.hidden) releaseAll() }
   function onBack(event: MouseEvent) { event.preventDefault(); navigate() }
 
   frame.addEventListener('load', () => {
+    errorTimer = window.setTimeout(() => {
+      if (!loading.classList.contains('hidden')) loading.textContent = '啟動逾時，請重新整理頁面再試。'
+    }, 90_000)
     readyTimer = window.setInterval(() => {
       if (destroyed) return
       try {
@@ -143,6 +149,7 @@ function renderGame(game: Game) {
         if (output.includes('Showing Window')) {
           loading.classList.add('hidden')
           window.clearInterval(readyTimer)
+          window.clearTimeout(errorTimer)
         }
       } catch { /* frame will be retried */ }
     }, 250)
@@ -157,6 +164,7 @@ function renderGame(game: Game) {
     releaseAll()
     observer.disconnect()
     window.clearInterval(readyTimer)
+    window.clearTimeout(errorTimer)
     document.removeEventListener('visibilitychange', visibility)
     frame.src = 'about:blank'
   }

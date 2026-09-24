@@ -78,41 +78,7 @@
         <hr>
     </div>
         <script src="boxedwine-shell.js"></script>
-<script>
-  // SDL receives mouse input; map a direct screen touch to the same action.
-  const gameCanvas = document.getElementById('canvas');
-  let activeTouch = null;
-  function sendTouchMouse(type, touch, buttons) {
-    gameCanvas.dispatchEvent(new MouseEvent(type, {
-      bubbles: true, cancelable: true, button: 0, buttons,
-      clientX: touch.clientX, clientY: touch.clientY,
-    }));
-  }
-  gameCanvas.addEventListener('touchstart', event => {
-    if (activeTouch !== null) return;
-    const touch = event.changedTouches[0];
-    if (!touch) return;
-    event.preventDefault();
-    activeTouch = touch.identifier;
-    sendTouchMouse('mousemove', touch, 0);
-    sendTouchMouse('mousedown', touch, 1);
-  }, { passive: false });
-  gameCanvas.addEventListener('touchmove', event => {
-    const touch = Array.from(event.changedTouches).find(item => item.identifier === activeTouch);
-    if (!touch) return;
-    event.preventDefault();
-    sendTouchMouse('mousemove', touch, 1);
-  }, { passive: false });
-  for (const eventName of ['touchend', 'touchcancel']) {
-    gameCanvas.addEventListener(eventName, event => {
-      const touch = Array.from(event.changedTouches).find(item => item.identifier === activeTouch);
-      if (!touch) return;
-      event.preventDefault();
-      sendTouchMouse('mouseup', touch, 0);
-      activeTouch = null;
-    }, { passive: false });
-  }
-</script>
+<script src="touch.js"></script>
 <script async type="text/javascript" src="boxedwine.js"></script>
   </body>
 </html>
