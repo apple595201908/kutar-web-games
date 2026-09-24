@@ -4,9 +4,9 @@
 
 ## 目前進度
 
-20 款執行檔已完成雜湊確認、素材提取和原生參考畫面擷取。20 款在本機 BoxedWine 網頁執行環境都已顯示原版標題與遊玩畫面，但使用者的 iPhone Safari 無法啟動任何一款，因此開始逐款改寫為原生 Canvas 2D 遊戲。第一款《纜車》已能在瀏覽器載入素材、開始、按時機乘車、計分、失敗和重玩，並保留本機最高分。這是供使用者體驗的第一版，玩法時機與畫面細節仍需對照原版調整；其餘 19 款尚未移植，在 iPhone 上會顯示進度說明。
+20 款執行檔已完成雜湊確認、素材提取和原生參考畫面擷取。20 款在本機 BoxedWine 網頁執行環境都已顯示原版標題與遊玩畫面，但使用者的 iPhone Safari 無法啟動任何一款，因此開始逐款改寫為原生 Canvas 2D 遊戲。《纜車》和《一口氣喝完》已能直接載入、開始、操作、計分或計時、結束和重玩，並保留本機最佳成績。《纜車》的 iPhone Safari 啟動已由使用者確認。這些是供使用者體驗的試玩版，玩法時機與畫面細節仍需對照原版調整；其餘 18 款尚未移植，在 iPhone 上會顯示進度說明。
 
-桌面瀏覽器中其餘 19 款仍使用 [BoxedWine 26R1.0](https://github.com/danoon2/Boxedwine/releases/tag/26R1.0) 執行原始程式。BoxedWine 網頁版載入和開場速度偏慢；《マニュファクチュア》在測試機約需一分鐘才顯示標題。目前不能宣稱完整 1:1 驗收通過。
+桌面瀏覽器中其餘 18 款仍使用 [BoxedWine 26R1.0](https://github.com/danoon2/Boxedwine/releases/tag/26R1.0) 執行原始程式。BoxedWine 網頁版載入和開場速度偏慢；《マニュファクチュア》在測試機約需一分鐘才顯示標題。目前不能宣稱完整 1:1 驗收通過。
 
 另外，模擬器目前把視窗標題及結算對話框中的日文顯示成亂碼；改設日文 `LANG` 後也未修復。這是原版畫面一致性尚未達標的另一項問題。
 
@@ -21,7 +21,7 @@ npm ci
 npm run dev
 ```
 
-開啟 Vite 提示的 `http://127.0.0.1:5173/kutar-web-games/`。《纜車》直接載入原生 Canvas 遊戲，不需要 Wine。其餘桌面遊戲使用模擬器，主選單會預先下載約 37 MB 的 Wine 執行環境。原始 sprite sheet 的洋紅背景由 `python tools/prepare_lift_native.py` 轉為透明 PNG；轉換後素材放在 `public/native/lift/` 並隨網站部署。低記憶體模組仍可用 `python tools/make_low_memory_wasm.py` 重建，但目前 iPhone Safari 不再嘗試進入模擬器。
+開啟 Vite 提示的 `http://127.0.0.1:5173/kutar-web-games/`。《纜車》和《一口氣喝完》直接載入原生 Canvas 遊戲，不需要 Wine。其餘桌面遊戲使用模擬器，主選單會預先下載約 37 MB 的 Wine 執行環境。原始 sprite sheet 的洋紅背景由 `python tools/prepare_native_assets.py` 轉為透明 PNG；轉換後素材放在 `public/native/` 並隨網站部署。低記憶體模組仍可用 `python tools/make_low_memory_wasm.py` 重建，但目前 iPhone Safari 不再嘗試進入模擬器。
 
 ```powershell
 npm run build

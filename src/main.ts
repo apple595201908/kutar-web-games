@@ -66,7 +66,7 @@ function renderMenu() {
         <p class="eyebrow">THE ORIGINAL 20 MINI GAMES</p>
         <h1>Kutar <span>網頁遊戲大集合</span></h1>
         <p class="hero-copy">選一款遊戲，直接在瀏覽器裡玩。以原版 400 × 300 畫面與美術呈現。</p>
-        <p class="first-release">${isIOS ? 'iPhone Safari：先開放《纜車》原生網頁試玩版。其餘遊戲正逐款改寫，避免再次卡在模擬器啟動畫面。' : '《纜車》已改為原生網頁試玩版；其餘遊戲目前沿用原版 Windows 執行環境。'}</p>
+        <p class="first-release">${isIOS ? 'iPhone Safari：先開放《纜車》和《一口氣喝完》原生網頁試玩版。其餘遊戲正逐款改寫，避免再次卡在模擬器啟動畫面。' : '《纜車》和《一口氣喝完》已改為原生網頁試玩版；其餘遊戲目前沿用原版 Windows 執行環境。'}</p>
         ${hasLaunchedGame || isIOS ? '' : '<p class="runtime-status" role="status">正在預先準備遊戲執行環境…</p>'}
         <a class="hero-jump" href="#games">選擇遊戲 <span aria-hidden="true">↓</span></a>
       </div>
@@ -77,7 +77,7 @@ function renderMenu() {
       <div class="game-grid">
         ${games.map((game, index) => `
           <a class="game-card" href="${escapeHtml(gameUrl(game.id).toString())}" data-game="${escapeHtml(game.id)}" aria-label="遊玩 ${escapeHtml(game.name)}">
-            <div class="game-art"><img src="${asset(`assets/${game.id.toLowerCase()}/title-screen.png`)}" alt="${escapeHtml(game.original)} 標題畫面" loading="lazy" width="400" height="300"><span class="play-badge" aria-hidden="true">${isIOS && game.id !== 'lift' ? '待' : '▶'}</span></div>
+            <div class="game-art"><img src="${asset(`assets/${game.id.toLowerCase()}/title-screen.png`)}" alt="${escapeHtml(game.original)} 標題畫面" loading="lazy" width="400" height="300"><span class="play-badge" aria-hidden="true">${isIOS && !['lift', 'ikki'].includes(game.id) ? '待' : '▶'}</span></div>
             <div class="game-info"><span class="game-number">${String(index + 1).padStart(2, '0')}</span><div><h3>${escapeHtml(game.name)}</h3><p>${escapeHtml(game.original)}</p></div><span class="card-arrow" aria-hidden="true">↗</span></div>
           </a>`).join('')}
       </div>
@@ -103,7 +103,8 @@ function renderMenu() {
   })
 }
 
-function renderNativeLift(game: Game) {
+function renderNativeGame(game: Game) {
+  const isIkki = game.id === 'ikki'
   document.title = `${game.name}｜Kutar 網頁遊戲大集合`
   root.innerHTML = `
     <main class="play-page">
@@ -112,9 +113,9 @@ function renderNativeLift(game: Game) {
       <div class="play-layout">
         <div class="game-column">
           <div class="stage native-stage"><canvas class="native-canvas" width="400" height="300" aria-label="${escapeHtml(game.name)} 遊戲畫面"></canvas><div class="native-loading" role="status">正在載入遊戲素材…</div></div>
-          <div class="controls" aria-label="遊戲操作"><button class="start-button" data-native-start type="button">▶ 開始 / 重玩</button><button class="action-button" data-native-action type="button">點按乘車</button></div>
+          <div class="controls" aria-label="遊戲操作"><button class="start-button" data-native-start type="button">▶ 開始 / 重玩</button><button class="action-button" data-native-action type="button">${isIkki ? '連點喝奶' : '點按乘車'}</button></div>
         </div>
-        <aside class="play-help"><div class="help-card"><p class="eyebrow">HOW TO PLAY</p><h2>操作方式</h2><p>看準纜車座位移到クター身邊時點按。連續成功乘車可以累積分數。</p><p>點遊戲畫面或下方大按鍵乘車；鍵盤可用空白鍵，F5 可重新開始。</p><p class="game-caveat">這是第一款原生網頁試玩版。操作時機與原作的細微差異，會依你的實玩回饋調整。</p></div><div class="help-card mini"><span>原始遊戲畫面</span><strong>400 × 300</strong><span>等比例顯示</span></div></aside>
+        <aside class="play-help"><div class="help-card"><p class="eyebrow">HOW TO PLAY</p><h2>操作方式</h2><p>${isIkki ? '連續點按讓クター喝完牛奶；喝得太急會噴出來。留意畫面左側的危險提示，挑戰最短時間。' : '看準纜車座位移到クター身邊時點按。連續成功乘車可以累積分數。'}</p><p>${isIkki ? '點遊戲畫面或下方大按鍵喝奶' : '點遊戲畫面或下方大按鍵乘車'}；鍵盤可用空白鍵，F5 可重新開始。</p><p class="game-caveat">原生網頁試玩版的操作時機與原作細節，會依你的實玩回饋調整。</p></div><div class="help-card mini"><span>原始遊戲畫面</span><strong>400 × 300</strong><span>等比例顯示</span></div></aside>
       </div>
     </main>`
 
@@ -123,7 +124,7 @@ function renderNativeLift(game: Game) {
   const back = root.querySelector<HTMLAnchorElement>('[data-back]')!
   const startButton = root.querySelector<HTMLButtonElement>('[data-native-start]')!
   const actionButton = root.querySelector<HTMLButtonElement>('[data-native-action]')!
-  let gameInstance: import('./native/lift').LiftGame | undefined
+  let gameInstance: import('./native/lift').LiftGame | import('./native/ikki').IkkiGame | undefined
   let destroyed = false
   const onBack = (event: MouseEvent) => { event.preventDefault(); navigate() }
   const onStart = (event: PointerEvent) => { event.preventDefault(); gameInstance?.start() }
@@ -137,7 +138,10 @@ function renderNativeLift(game: Game) {
   actionButton.addEventListener('pointerdown', onAction)
   canvas.addEventListener('pointerdown', onAction)
   document.addEventListener('keydown', onKey)
-  void import('./native/lift').then(({ createLiftGame }) => createLiftGame(canvas, import.meta.env.BASE_URL)).then(instance => {
+  const loadGame = isIkki
+    ? import('./native/ikki').then(({ createIkkiGame }) => createIkkiGame(canvas, import.meta.env.BASE_URL))
+    : import('./native/lift').then(({ createLiftGame }) => createLiftGame(canvas, import.meta.env.BASE_URL))
+  void loadGame.then(instance => {
     if (destroyed) { instance.dispose(); return }
     gameInstance = instance
     loading.remove()
@@ -157,12 +161,14 @@ function renderIOSUnavailable(game: Game) {
     <main class="play-page">
       <nav class="play-nav"><a class="back-link" href="${escapeHtml(gameUrl().toString())}" data-back>← 返回遊戲選單</a></nav>
       <div class="play-heading"><p class="eyebrow">iPHONE SAFARI</p><h1>${escapeHtml(game.name)}</h1><p>${escapeHtml(game.original)}</p></div>
-      <div class="unavailable-card"><img src="${asset(`assets/${game.id.toLowerCase()}/title-screen.png`)}" width="400" height="300" alt="${escapeHtml(game.original)} 標題畫面"><div><h2>這款正在改寫為網頁版</h2><p>原版 Windows 模擬器無法在目前的 iPhone Safari 上啟動。這款完成移植後就能直接遊玩，現在可以先試玩《纜車》的原生網頁版。</p><a href="${escapeHtml(gameUrl('lift').toString())}" data-lift>試玩纜車 →</a></div></div>
+      <div class="unavailable-card"><img src="${asset(`assets/${game.id.toLowerCase()}/title-screen.png`)}" width="400" height="300" alt="${escapeHtml(game.original)} 標題畫面"><div><h2>這款正在改寫為網頁版</h2><p>原版 Windows 模擬器無法在目前的 iPhone Safari 上啟動。這款完成移植後就能直接遊玩，現在可以先試玩《纜車》和《一口氣喝完》的原生網頁版。</p><a href="${escapeHtml(gameUrl('lift').toString())}" data-lift>試玩纜車 →</a><a href="${escapeHtml(gameUrl('ikki').toString())}" data-ikki>試玩一口氣喝完 →</a></div></div>
     </main>`
   const back = root.querySelector<HTMLAnchorElement>('[data-back]')!
   const lift = root.querySelector<HTMLAnchorElement>('[data-lift]')!
+  const ikki = root.querySelector<HTMLAnchorElement>('[data-ikki]')!
   back.addEventListener('click', event => { event.preventDefault(); navigate() })
   lift.addEventListener('click', event => { event.preventDefault(); navigate('lift') })
+  ikki.addEventListener('click', event => { event.preventDefault(); navigate('ikki') })
 }
 
 function renderGame(game: Game) {
@@ -335,7 +341,7 @@ function render() {
   cleanup = undefined
   const id = new URLSearchParams(location.search).get('game')
   const game = id ? gameById.get(id) : undefined
-  if (game?.id === 'lift' && (isIOS || new URLSearchParams(location.search).get('mode') !== 'original')) renderNativeLift(game)
+  if (game && ['lift', 'ikki'].includes(game.id) && (isIOS || new URLSearchParams(location.search).get('mode') !== 'original')) renderNativeGame(game)
   else if (game && isIOS) renderIOSUnavailable(game)
   else if (game) renderGame(game)
   else renderMenu()
