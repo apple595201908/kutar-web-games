@@ -16,3 +16,10 @@ Other games' exact input, score thresholds and timing still need direct checks.
 The UI now maps a directional touch or button to the corresponding original
 mouse button. The generic control category does not by itself verify each
 game's rules.
+
+For short objective descriptions on the menu, use the original PC entries in
+the [publisher's 平成レトロ catalogue](https://www.kutar.com/wonderful.html),
+especially its original-game descriptions near the end of the page. Its HD
+section describes later variants; for example, the HD `kona` entry mentions
+seasoning while the original PC entry says to catch powder falling from the
+left and right. These catalogue blurbs do not establish exact button mapping.
