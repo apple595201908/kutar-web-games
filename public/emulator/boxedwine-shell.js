@@ -33,6 +33,7 @@
         var dropzone = document.getElementById("dropzone");
 
         function setConfiguration() {
+            Config.storageMode = getParameter("storage") === "memory" ? STORAGE_MEMORY : STORAGE_INDEXED_DB;
             Config.appDirPrefix = DEFAULT_APP_DIRECTORY;
             Config.isAutoRunSet = getAutoRun();
             Config.loadDesktop = getLoadDesktop();
@@ -346,7 +347,10 @@
 			}).then(buffer => new Uint8Array(buffer));
 			(preloaded ? Promise.resolve(preloaded).then(buffer => new Uint8Array(buffer)).catch(download) : download())
 				.then(callback)
-				.catch(error => console.error(error));
+				.catch(error => {
+					console.error(error);
+					if (window.parent !== window) window.parent.postMessage({ type: 'kutar-launch-error' }, location.origin);
+				});
 		}
         function buildAppFileSystem(callback) {
             if(Config.appPayload.length > 0){
@@ -401,12 +405,20 @@
 	  			if (Config.persist_d_drive) {
 	  				FS.mount(IDBFS, {autoPersist: true}, Config.d_drive);
 	  			}
-  				FS.syncfs(true, function (err) {
-  					if (err) {
-  						console.log('unable to sync folder: ' + ROOT);
-  					} else {
-  						callback();
-  					}
+				let completed = false;
+				let finish = () => {
+					if (completed) return;
+					completed = true;
+					clearTimeout(syncTimeout);
+					callback();
+				};
+				let syncTimeout = setTimeout(() => {
+					console.warn('Storage sync timed out; continuing without saved state');
+					finish();
+				}, 10000);
+				FS.syncfs(true, function (err) {
+					if (err) console.warn('Storage sync failed; continuing without saved state', err);
+					finish();
 				});
 			} else {
 				callback();
@@ -468,6 +480,15 @@
             	spinnerElement.hidden = false;
             
 	        	buildExtraFileSystems(() => {
+                    if (getParameter("safe") === "1") {
+                        buildAppFileSystem(() => {
+                            loadFile(Config.locateRootBaseUrl, Config.rootZipFile, bytes => {
+                                createFile("/", Config.rootZipFile, bytes);
+                                buildBrowserFileSystem();
+                            });
+                        });
+                        return;
+                    }
                     let rootBytes, rootReady = false, appReady = false;
                     let finish = () => {
                         if (!rootReady || !appReady) return;
@@ -735,10 +756,17 @@
       window.onerror = function() {
         Module.setStatus('Exception thrown, see JavaScript console');
         spinnerElement.style.display = 'none';
+        if (window.parent !== window) window.parent.postMessage({ type: 'kutar-launch-error' }, location.origin);
         Module.setStatus = function(text) {
           if (text) Module.printErr('[post-exception status] ' + text);
         };
       };
+      window.addEventListener('unhandledrejection', function(event) {
+        console.error('Emulator startup rejected', event.reason);
+        if (/WebAssembly|wasm|memory|abort|CompileError/i.test(String(event.reason)) && window.parent !== window) {
+          window.parent.postMessage({ type: 'kutar-launch-error' }, location.origin);
+        }
+      });
         function startWithFiles(files) {
             for (let i = 0; i < files.length; i++) {
                 uploadFile(files[i]);

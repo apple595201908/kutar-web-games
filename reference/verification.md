@@ -34,6 +34,13 @@ and game stage were visually checked, as were deep links and back navigation.
 Touch bridge lifecycle has six automated tests; this does not substitute for
 real device testing. A visible window alone is **not** a pass.
 
+On 2026-09-24, the user reported every game remaining on the loading overlay
+for more than two minutes in iPhone Safari. Desktop Chromium reached
+`Showing Window` on the public site. The iPhone fallback now avoids the
+37 MB JavaScript prefetch buffer and IndexedDB startup sync, uses sequential
+file loading, and reports startup failures after a bounded wait. This remains
+unverified on the user's device until they retry the updated deployment.
+
 For `ikki`, a temporary browser diagnostic confirmed both wrapper-generated
 `mousedown`/`mouseup` events and a physical trusted click arrived at the
 emulator canvas during play. BoxedWine had installed a `mousedown` listener on

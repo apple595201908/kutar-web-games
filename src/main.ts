@@ -3,6 +3,7 @@ import { gameById, games, type Game } from './games'
 
 const root = document.querySelector<HTMLDivElement>('#app')!
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
 let cleanup: (() => void) | undefined
 let hasLaunchedGame = false
 const preloads = new Map<string, Promise<ArrayBuffer>>()
@@ -65,8 +66,8 @@ function renderMenu() {
         <p class="eyebrow">THE ORIGINAL 20 MINI GAMES</p>
         <h1>Kutar <span>網頁遊戲大集合</span></h1>
         <p class="hero-copy">選一款遊戲，直接在瀏覽器裡玩。以原版 400 × 300 畫面與美術呈現。</p>
-        <p class="first-release">第一版體驗中：20 款皆可開啟並進入遊戲；部分操作、音效與計分仍待實際遊玩確認。首次載入可能較久。</p>
-        ${hasLaunchedGame ? '' : '<p class="runtime-status" role="status">正在預先準備遊戲執行環境…</p>'}
+        <p class="first-release">第一版體驗中：20 款已在桌面瀏覽器進入遊戲；iPhone Safari 相容模式與部分操作、音效、計分仍待實玩確認。首次載入可能較久。</p>
+        ${hasLaunchedGame || isIOS ? '' : '<p class="runtime-status" role="status">正在預先準備遊戲執行環境…</p>'}
         <a class="hero-jump" href="#games">選擇遊戲 <span aria-hidden="true">↓</span></a>
       </div>
       <div class="hero-cats" aria-hidden="true">●　●　●</div>
@@ -87,7 +88,7 @@ function renderMenu() {
     event.preventDefault()
     navigate(link.dataset.game)
   }))
-  if (!hasLaunchedGame) {
+  if (!hasLaunchedGame && !isIOS) {
     const status = root.querySelector<HTMLElement>('.runtime-status')!
     void preload('emulator/boxedwine.zip').then(() => {
       if (status.isConnected) status.textContent = '遊戲執行環境已備妥，選好就能開始。'
@@ -95,7 +96,7 @@ function renderMenu() {
       if (status.isConnected) status.textContent = '預先載入未完成，選擇遊戲後會重試。'
     })
   }
-  root.querySelectorAll<HTMLAnchorElement>('[data-game]').forEach(link => {
+  if (!isIOS) root.querySelectorAll<HTMLAnchorElement>('[data-game]').forEach(link => {
     const warmGame = () => preload(`emulator/games/${link.dataset.game!.toLowerCase()}.zip`)
     link.addEventListener('pointerdown', warmGame, { once: true })
     link.addEventListener('focus', warmGame, { once: true })
@@ -104,10 +105,12 @@ function renderMenu() {
 
 function renderGame(game: Game) {
   hasLaunchedGame = true
-  preload('emulator/boxedwine.zip')
-  preload(`emulator/games/${game.id.toLowerCase()}.zip`)
+  if (!isIOS) {
+    preload('emulator/boxedwine.zip')
+    preload(`emulator/games/${game.id.toLowerCase()}.zip`)
+  }
   document.title = `${game.name}｜Kutar 網頁遊戲大集合`
-  const src = asset(`emulator/boxedwine.html?v=launch-2&app=${encodeURIComponent(game.id.toLowerCase())}&p=${encodeURIComponent(game.id + '.exe')}&resolution=406x365&controls=${game.control}`)
+  const src = asset(`emulator/boxedwine.html?v=launch-3&app=${encodeURIComponent(game.id.toLowerCase())}&p=${encodeURIComponent(game.id + '.exe')}&resolution=406x365&controls=${game.control}${isIOS ? '&storage=memory&safe=1' : ''}`)
   root.innerHTML = `
     <main class="play-page">
       <nav class="play-nav"><a class="back-link" href="${escapeHtml(gameUrl().toString())}" data-back>← 返回遊戲選單</a><span>KU<span class="brand-red">T</span>AR / ${escapeHtml(game.original)}</span></nav>
@@ -120,7 +123,7 @@ function renderGame(game: Game) {
             ${game.control === 'sides' ? `<div class="side-controls"><button data-action="left" type="button">← 左半邊</button><button data-action="right" type="button">右半邊 →</button></div>` : game.control === 'single' ? `<button class="action-button" data-action="tap" type="button">${game.id === 'ikki' ? '連點喝奶' : '點按 / 動作'}</button>` : `<p class="direct-hint">請直接點選遊戲畫面中的目標</p>`}
           </div>
         </div>
-        <aside class="play-help"><div class="help-card"><p class="eyebrow">HOW TO PLAY</p><h2>操作方式</h2><p>${escapeHtml(game.description)}</p><p>等原版標題畫面出現後，按「開始 / 重玩」或鍵盤 F5。鍵盤與滑鼠可沿用原版操作；手機可點遊戲畫面或下方大按鍵。</p>${game.id === 'ikki' ? '<p class="game-caveat">第一版已知問題：網頁版連點喝奶的反應尚未確認，歡迎先試玩並回報。</p>' : ''}<p class="game-caveat">第一版體驗中：手機操作、音效及完整計分流程仍待實玩確認。</p></div><div class="help-card mini"><span>原始畫面</span><strong>400 × 300</strong><span>完整等比例顯示</span></div></aside>
+        <aside class="play-help"><div class="help-card"><p class="eyebrow">HOW TO PLAY</p><h2>操作方式</h2><p>${escapeHtml(game.description)}</p><p>等原版標題畫面出現後，按「開始 / 重玩」或鍵盤 F5。鍵盤與滑鼠可沿用原版操作；手機可點遊戲畫面或下方大按鍵。</p>${game.id === 'ikki' ? '<p class="game-caveat">第一版已知問題：網頁版連點喝奶的反應尚未確認，歡迎先試玩並回報。</p>' : ''}${isIOS ? '<p class="game-caveat">iPhone 相容模式暫不保存遊戲內的分數。</p>' : ''}<p class="game-caveat">第一版體驗中：手機操作、音效及完整計分流程仍待實玩確認。</p></div><div class="help-card mini"><span>原始畫面</span><strong>400 × 300</strong><span>完整等比例顯示</span></div></aside>
       </div>
     </main>`
 
@@ -217,22 +220,35 @@ function renderGame(game: Game) {
   function visibility() { if (document.hidden) releaseAll() }
   function onBack(event: MouseEvent) { event.preventDefault(); navigate() }
 
-  frame.addEventListener('load', () => {
-    errorTimer = window.setTimeout(() => {
-      if (!loading.classList.contains('hidden')) loading.textContent = '啟動逾時，請重新整理頁面再試。'
-    }, 90_000)
-    readyTimer = window.setInterval(() => {
-      if (destroyed) return
-      try {
-        const output = frame.contentDocument?.querySelector<HTMLTextAreaElement>('#output')?.value ?? ''
-        if (output.includes('Showing Window')) {
-          loading.classList.add('hidden')
-          window.clearInterval(readyTimer)
-          window.clearTimeout(errorTimer)
-        }
-      } catch { /* frame will be retried */ }
-    }, 250)
-  })
+  function showLoadFailure() {
+    if (destroyed || loading.classList.contains('hidden')) return
+    loading.innerHTML = '<span>遊戲未能啟動。</span><button type="button" data-retry>重新嘗試</button>'
+  }
+  function onLoadingClick(event: MouseEvent) {
+    if (!(event.target as HTMLElement).closest('[data-retry]')) return
+    loading.innerHTML = '<span class="loader"></span>正在重新啟動原版遊戲…'
+    window.clearTimeout(errorTimer)
+    errorTimer = window.setTimeout(showLoadFailure, 90_000)
+    frame.src = `${src}&retry=${Date.now()}`
+  }
+  function onRuntimeMessage(event: MessageEvent) {
+    if (event.origin !== location.origin || event.source !== frame.contentWindow || event.data?.type !== 'kutar-launch-error') return
+    showLoadFailure()
+  }
+  errorTimer = window.setTimeout(showLoadFailure, 90_000)
+  readyTimer = window.setInterval(() => {
+    if (destroyed) return
+    try {
+      const output = frame.contentDocument?.querySelector<HTMLTextAreaElement>('#output')?.value ?? ''
+      if (output.includes('Showing Window')) {
+        loading.classList.add('hidden')
+        window.clearInterval(readyTimer)
+        window.clearTimeout(errorTimer)
+      }
+    } catch { /* frame will be retried */ }
+  }, 250)
+  loading.addEventListener('click', onLoadingClick)
+  window.addEventListener('message', onRuntimeMessage)
   controls.addEventListener('pointerdown', pointerDown)
   controls.addEventListener('pointerup', pointerUp)
   controls.addEventListener('pointercancel', pointerUp)
@@ -245,6 +261,7 @@ function renderGame(game: Game) {
     window.clearInterval(readyTimer)
     window.clearTimeout(errorTimer)
     document.removeEventListener('visibilitychange', visibility)
+    window.removeEventListener('message', onRuntimeMessage)
     frame.src = 'about:blank'
   }
 }
