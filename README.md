@@ -4,7 +4,7 @@
 
 ## 目前進度
 
-20 款執行檔已完成雜湊確認、素材提取和原生參考畫面擷取。20 款在本機 BoxedWine 網頁執行環境都已顯示原版標題與遊玩畫面；部分已看到分數變化、失敗結算和重新開始。各款的已驗證項目及待驗項目記於 [`reference/verification.md`](reference/verification.md)，已核對的原版操作與資料來源記於 [`reference/controls.md`](reference/controls.md)。觸控橋接的多指、左右切換、頁面隱藏釋放等邏輯有自動測試，但仍需在實際手機上驗證。原版節奏與所有遊戲的得分、結束條件尚未逐款通過對照。因此 GitHub 儲存庫目前維持私人，網站尚未公開。
+20 款執行檔已完成雜湊確認、素材提取和原生參考畫面擷取。20 款在本機 BoxedWine 網頁執行環境都已顯示原版標題與遊玩畫面；部分已看到分數變化、失敗結算和重新開始。各款的已驗證項目及待驗項目記於 [`reference/verification.md`](reference/verification.md)，已核對的原版操作與資料來源記於 [`reference/controls.md`](reference/controls.md)。觸控橋接的多指、左右切換、頁面隱藏釋放等邏輯有自動測試，但仍需在實際手機上驗證。依使用者要求，先發佈供真人遊玩回饋的第一版；原版節奏與所有遊戲的得分、結束條件尚未逐款通過對照。
 
 原計畫是以 Canvas 2D 逐款重寫。實測後改用 [BoxedWine 26R1.0](https://github.com/danoon2/Boxedwine/releases/tag/26R1.0) 在瀏覽器內執行原始程式，以保留原版判定、動畫、美術與音效。BoxedWine 網頁版載入和開場速度偏慢；《マニュファクチュア》在測試機約需一分鐘才顯示標題。這仍須確認各款在瀏覽器中的速度、輸入和儲存行為；目前不能宣稱完整 1:1 驗收通過。
 

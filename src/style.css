@@ -17,6 +17,7 @@ a { color: inherit; }
 .hero h1 { margin: 0; font-size: clamp(38px, 6vw, 72px); line-height: 1.1; font-weight: 900; letter-spacing: -.055em; }
 .hero h1 span { display: block; font-size: .5em; letter-spacing: .015em; margin-top: 14px; }
 .hero-copy { max-width: 560px; line-height: 1.8; font-size: 15px; color: #e4f1ff; }
+.first-release { max-width: 650px; margin: 12px 0 0; padding: 10px 13px; border: 1px solid #ffffff66; border-radius: 8px; background: #ffffff18; color: #fff4d8; font-size: 12px; line-height: 1.7; }
 .hero-jump { display: inline-flex; align-items: center; gap: 22px; margin-top: 10px; padding: 10px 19px; border-radius: 999px; background: #fff; color: #254c7e; font-weight: 900; font-size: 13px; text-decoration: none; }
 .hero-jump:hover { background: #f6d387; }
 .hero-cats { position: absolute; right: 23%; bottom: 50px; transform: rotate(-17deg); color: #a8d9db; font-size: 26px; }
@@ -64,6 +65,7 @@ a { color: inherit; }
 .help-card h2 { margin: 0 0 10px; font-size: 20px; }
 .help-card p:not(.eyebrow) { margin: 0 0 13px; line-height: 1.8; font-size: 13px; color: #617082; }
 .help-card p:last-child { margin-bottom: 0; }
+.help-card .game-caveat { padding: 9px 11px; border-radius: 7px; background: #fff2d6; color: #755019; }
 .help-card.mini { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 12px; padding: 14px 18px; font-size: 11px; color: #718095; }
 .help-card.mini strong { font-size: 15px; color: #244d81; white-space: nowrap; }
 @media (max-width: 920px) { .game-grid { grid-template-columns: repeat(3,minmax(0,1fr)); } }

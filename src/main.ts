@@ -30,6 +30,7 @@ function renderMenu() {
         <p class="eyebrow">THE ORIGINAL 20 MINI GAMES</p>
         <h1>Kutar <span>網頁遊戲大集合</span></h1>
         <p class="hero-copy">選一款遊戲，直接在瀏覽器裡玩。以原版 400 × 300 畫面與美術呈現。</p>
+        <p class="first-release">第一版體驗中：20 款皆可開啟並進入遊戲；部分操作、音效與計分仍待實際遊玩確認。首次載入可能較久。</p>
         <a class="hero-jump" href="#games">選擇遊戲 <span aria-hidden="true">↓</span></a>
       </div>
       <div class="hero-cats" aria-hidden="true">●　●　●</div>
@@ -67,7 +68,7 @@ function renderGame(game: Game) {
             ${game.control === 'sides' ? `<div class="side-controls"><button data-action="left" type="button">← 左半邊</button><button data-action="right" type="button">右半邊 →</button></div>` : game.control === 'single' ? `<button class="action-button" data-action="tap" type="button">${game.id === 'ikki' ? '連點喝奶' : '點按 / 動作'}</button>` : `<p class="direct-hint">請直接點選遊戲畫面中的目標</p>`}
           </div>
         </div>
-        <aside class="play-help"><div class="help-card"><p class="eyebrow">HOW TO PLAY</p><h2>操作方式</h2><p>${escapeHtml(game.description)}</p><p>等原版標題畫面出現後，按「開始 / 重玩」或鍵盤 F5。鍵盤與滑鼠可沿用原版操作；手機可點遊戲畫面或下方大按鍵。</p></div><div class="help-card mini"><span>原始畫面</span><strong>400 × 300</strong><span>完整等比例顯示</span></div></aside>
+        <aside class="play-help"><div class="help-card"><p class="eyebrow">HOW TO PLAY</p><h2>操作方式</h2><p>${escapeHtml(game.description)}</p><p>等原版標題畫面出現後，按「開始 / 重玩」或鍵盤 F5。鍵盤與滑鼠可沿用原版操作；手機可點遊戲畫面或下方大按鍵。</p>${game.id === 'ikki' ? '<p class="game-caveat">第一版已知問題：網頁版連點喝奶的反應尚未確認，歡迎先試玩並回報。</p>' : ''}<p class="game-caveat">第一版體驗中：手機操作、音效及完整計分流程仍待實玩確認。</p></div><div class="help-card mini"><span>原始畫面</span><strong>400 × 300</strong><span>完整等比例顯示</span></div></aside>
       </div>
     </main>`
 
