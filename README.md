@@ -21,7 +21,7 @@ npm ci
 npm run dev
 ```
 
-開啟 Vite 提示的 `http://127.0.0.1:5173/kutar-web-games/`。桌面瀏覽器的主選單會預先下載約 37 MB 的 Wine 執行環境；遊戲封裝與執行環境會並行載入，並重用選單已開始的下載。iPhone Safari 使用較省記憶體的順序載入與暫存儲存模式，避免其儲存同步或預載記憶體造成啟動卡住；這個模式目前不保存原作分數。模擬器啟動及原作開場動畫仍需時間。
+開啟 Vite 提示的 `http://127.0.0.1:5173/kutar-web-games/`。桌面瀏覽器的主選單會預先下載約 37 MB 的 Wine 執行環境；遊戲封裝與執行環境會並行載入，並重用選單已開始的下載。iPhone Safari 使用 256 MiB 固定記憶體的 WebAssembly 版本、順序載入與暫存儲存模式，避免原版 512 MiB 記憶體需求、儲存同步或預載記憶體造成啟動卡住；這個模式目前不保存原作分數。模擬器啟動及原作開場動畫仍需時間。低記憶體模組可用 `python tools/make_low_memory_wasm.py` 從原始模組重建。
 
 ```powershell
 npm run build

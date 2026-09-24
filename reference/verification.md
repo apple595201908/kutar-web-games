@@ -40,6 +40,11 @@ for more than two minutes in iPhone Safari. Desktop Chromium reached
 37 MB JavaScript prefetch buffer and IndexedDB startup sync, uses sequential
 file loading, and reports startup failures after a bounded wait. This remains
 unverified on the user's device until they retry the updated deployment.
+The upstream WebAssembly module declares 512 MiB fixed memory. A reproducible
+256 MiB variant is now selected for iPhone Safari; the `balloon` and `manu`
+windows reached `Showing Window` with this variant in desktop Chromium.
+Actual iPhone startup and sustained gameplay remain to be confirmed by the
+user.
 
 For `ikki`, a temporary browser diagnostic confirmed both wrapper-generated
 `mousedown`/`mouseup` events and a physical trusted click arrived at the

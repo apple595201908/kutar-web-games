@@ -688,6 +688,13 @@
         }
       var Module = {
         preRun: [initialSetup],
+        locateFile: function(path, prefix) {
+          if (getParameter("safe") === "1" && path === "boxedwine.wasm") {
+            console.log('Using 256 MiB mobile WASM');
+            return prefix + "boxedwine-mobile.wasm";
+          }
+          return prefix + path;
+        },
         arguments: [],
         postRun: [],
         print: (function() {

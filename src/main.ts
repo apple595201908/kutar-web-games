@@ -110,7 +110,7 @@ function renderGame(game: Game) {
     preload(`emulator/games/${game.id.toLowerCase()}.zip`)
   }
   document.title = `${game.name}｜Kutar 網頁遊戲大集合`
-  const src = asset(`emulator/boxedwine.html?v=launch-3&app=${encodeURIComponent(game.id.toLowerCase())}&p=${encodeURIComponent(game.id + '.exe')}&resolution=406x365&controls=${game.control}${isIOS ? '&storage=memory&safe=1' : ''}`)
+  const src = asset(`emulator/boxedwine.html?v=launch-4&app=${encodeURIComponent(game.id.toLowerCase())}&p=${encodeURIComponent(game.id + '.exe')}&resolution=406x365&controls=${game.control}${isIOS ? '&storage=memory&safe=1' : ''}`)
   root.innerHTML = `
     <main class="play-page">
       <nav class="play-nav"><a class="back-link" href="${escapeHtml(gameUrl().toString())}" data-back>← 返回遊戲選單</a><span>KU<span class="brand-red">T</span>AR / ${escapeHtml(game.original)}</span></nav>
@@ -140,8 +140,9 @@ function renderGame(game: Game) {
   let destroyed = false
 
   const resize = () => stage.style.setProperty('--scale', String(stage.clientWidth / 406))
-  const observer = new ResizeObserver(resize)
-  observer.observe(stage)
+  const observer = typeof ResizeObserver === 'undefined' ? undefined : new ResizeObserver(resize)
+  observer?.observe(stage)
+  window.addEventListener('resize', resize)
   resize()
 
   function getCanvas() {
@@ -257,7 +258,8 @@ function renderGame(game: Game) {
   cleanup = () => {
     destroyed = true
     releaseAll()
-    observer.disconnect()
+    observer?.disconnect()
+    window.removeEventListener('resize', resize)
     window.clearInterval(readyTimer)
     window.clearTimeout(errorTimer)
     document.removeEventListener('visibilitychange', visibility)
