@@ -1,12 +1,12 @@
 # Kutar 網頁遊戲大集合
 
-以 20 款原版 Windows 小遊戲為基礎的瀏覽器合集。主選單可選擇遊戲，網址 `?game=<id>` 可直接開啟指定遊戲。遊戲視窗維持原始的 406 × 365 像素（包含 400 × 300 遊玩區），在小螢幕上完整等比例縮小。
+以 20 款原版 Windows 小遊戲為基礎的瀏覽器合集。主選單可選擇遊戲，網址 `?game=<id>` 可直接開啟指定遊戲。原生網頁遊戲使用 400 × 300 遊玩區，在小螢幕上完整等比例縮小。
 
 ## 目前進度
 
-20 款執行檔已完成雜湊確認、素材提取和原生參考畫面擷取。20 款在本機 BoxedWine 網頁執行環境都已顯示原版標題與遊玩畫面；部分已看到分數變化、失敗結算和重新開始。各款的已驗證項目及待驗項目記於 [`reference/verification.md`](reference/verification.md)，已核對的原版操作與資料來源記於 [`reference/controls.md`](reference/controls.md)。觸控橋接的多指、左右切換、頁面隱藏釋放等邏輯有自動測試，但仍需在實際手機上驗證。依使用者要求，先發佈供真人遊玩回饋的第一版；原版節奏與所有遊戲的得分、結束條件尚未逐款通過對照。
+20 款執行檔已完成雜湊確認、素材提取和原生參考畫面擷取。20 款在本機 BoxedWine 網頁執行環境都已顯示原版標題與遊玩畫面，但使用者的 iPhone Safari 無法啟動任何一款，因此開始逐款改寫為原生 Canvas 2D 遊戲。第一款《纜車》已能在瀏覽器載入素材、開始、按時機乘車、計分、失敗和重玩，並保留本機最高分。這是供使用者體驗的第一版，玩法時機與畫面細節仍需對照原版調整；其餘 19 款尚未移植，在 iPhone 上會顯示進度說明。
 
-原計畫是以 Canvas 2D 逐款重寫。實測後改用 [BoxedWine 26R1.0](https://github.com/danoon2/Boxedwine/releases/tag/26R1.0) 在瀏覽器內執行原始程式，以保留原版判定、動畫、美術與音效。BoxedWine 網頁版載入和開場速度偏慢；《マニュファクチュア》在測試機約需一分鐘才顯示標題。這仍須確認各款在瀏覽器中的速度、輸入和儲存行為；目前不能宣稱完整 1:1 驗收通過。
+桌面瀏覽器中其餘 19 款仍使用 [BoxedWine 26R1.0](https://github.com/danoon2/Boxedwine/releases/tag/26R1.0) 執行原始程式。BoxedWine 網頁版載入和開場速度偏慢；《マニュファクチュア》在測試機約需一分鐘才顯示標題。目前不能宣稱完整 1:1 驗收通過。
 
 另外，模擬器目前把視窗標題及結算對話框中的日文顯示成亂碼；改設日文 `LANG` 後也未修復。這是原版畫面一致性尚未達標的另一項問題。
 
@@ -21,7 +21,7 @@ npm ci
 npm run dev
 ```
 
-開啟 Vite 提示的 `http://127.0.0.1:5173/kutar-web-games/`。桌面瀏覽器的主選單會預先下載約 37 MB 的 Wine 執行環境；遊戲封裝與執行環境會並行載入，並重用選單已開始的下載。iPhone Safari 使用 256 MiB 固定記憶體的 WebAssembly 版本、順序載入與暫存儲存模式，避免原版 512 MiB 記憶體需求、儲存同步或預載記憶體造成啟動卡住；這個模式目前不保存原作分數。模擬器啟動及原作開場動畫仍需時間。低記憶體模組可用 `python tools/make_low_memory_wasm.py` 從原始模組重建。
+開啟 Vite 提示的 `http://127.0.0.1:5173/kutar-web-games/`。《纜車》直接載入原生 Canvas 遊戲，不需要 Wine。其餘桌面遊戲使用模擬器，主選單會預先下載約 37 MB 的 Wine 執行環境。原始 sprite sheet 的洋紅背景由 `python tools/prepare_lift_native.py` 轉為透明 PNG；轉換後素材放在 `public/native/lift/` 並隨網站部署。低記憶體模組仍可用 `python tools/make_low_memory_wasm.py` 重建，但目前 iPhone Safari 不再嘗試進入模擬器。
 
 ```powershell
 npm run build
