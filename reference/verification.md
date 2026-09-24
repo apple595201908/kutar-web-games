@@ -43,7 +43,9 @@ check; the remaining fault is past DOM event delivery, or the game's timing or
 input conditions are still misunderstood. Clicking the original toolbar's
 `R` icon during play did return to the title, so at least toolbar mouse input
 reaches the emulated Windows application. Forty direct clicks on the bottle
-during one round did not visibly empty it.
+during one round did not visibly empty it. Twelve wrapper clicks paced roughly
+1.4 seconds apart likewise left the bottle unchanged. The failed checks cover
+both fast and slow input; `ikki` remains unverified.
 
 The emulated Windows title bar and score dialogs render Japanese text as
 mojibake. Setting `LANG=ja_JP.UTF-8` through BoxedWine's `env` parameter did not
