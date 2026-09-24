@@ -4,6 +4,41 @@ import { gameById, games, type Game } from './games'
 const root = document.querySelector<HTMLDivElement>('#app')!
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`
 let cleanup: (() => void) | undefined
+let hasLaunchedGame = false
+const preloads = new Map<string, Promise<ArrayBuffer>>()
+
+declare global {
+  interface Window {
+    __kutarTakePreload?: (url: string) => Promise<ArrayBuffer> | undefined
+  }
+}
+
+function preload(path: string) {
+  const url = new URL(asset(path), location.href).href
+  const existing = preloads.get(url)
+  if (existing) return existing
+  const pending = fetch(url).then(async response => {
+    if (!response.ok) throw new Error(`Unable to preload ${path}: ${response.status}`)
+    return response.arrayBuffer()
+  })
+  preloads.set(url, pending)
+  void pending.then(() => {
+    // Keep the downloaded bytes briefly for an imminent launch; the browser
+    // HTTP cache handles later visits without retaining 37 MB in this page.
+    window.setTimeout(() => {
+      if (preloads.get(url) === pending) preloads.delete(url)
+    }, 30_000)
+  }, () => {
+    if (preloads.get(url) === pending) preloads.delete(url)
+  })
+  return pending
+}
+
+window.__kutarTakePreload = url => {
+  const pending = preloads.get(url)
+  preloads.delete(url)
+  return pending
+}
 
 function gameUrl(id?: string) {
   const url = new URL(location.href)
@@ -31,6 +66,7 @@ function renderMenu() {
         <h1>Kutar <span>網頁遊戲大集合</span></h1>
         <p class="hero-copy">選一款遊戲，直接在瀏覽器裡玩。以原版 400 × 300 畫面與美術呈現。</p>
         <p class="first-release">第一版體驗中：20 款皆可開啟並進入遊戲；部分操作、音效與計分仍待實際遊玩確認。首次載入可能較久。</p>
+        ${hasLaunchedGame ? '' : '<p class="runtime-status" role="status">正在預先準備遊戲執行環境…</p>'}
         <a class="hero-jump" href="#games">選擇遊戲 <span aria-hidden="true">↓</span></a>
       </div>
       <div class="hero-cats" aria-hidden="true">●　●　●</div>
@@ -51,9 +87,25 @@ function renderMenu() {
     event.preventDefault()
     navigate(link.dataset.game)
   }))
+  if (!hasLaunchedGame) {
+    const status = root.querySelector<HTMLElement>('.runtime-status')!
+    void preload('emulator/boxedwine.zip').then(() => {
+      if (status.isConnected) status.textContent = '遊戲執行環境已備妥，選好就能開始。'
+    }, () => {
+      if (status.isConnected) status.textContent = '預先載入未完成，選擇遊戲後會重試。'
+    })
+  }
+  root.querySelectorAll<HTMLAnchorElement>('[data-game]').forEach(link => {
+    const warmGame = () => preload(`emulator/games/${link.dataset.game!.toLowerCase()}.zip`)
+    link.addEventListener('pointerdown', warmGame, { once: true })
+    link.addEventListener('focus', warmGame, { once: true })
+  })
 }
 
 function renderGame(game: Game) {
+  hasLaunchedGame = true
+  preload('emulator/boxedwine.zip')
+  preload(`emulator/games/${game.id.toLowerCase()}.zip`)
   document.title = `${game.name}｜Kutar 網頁遊戲大集合`
   const src = asset(`emulator/boxedwine.html?app=${encodeURIComponent(game.id.toLowerCase())}&p=${encodeURIComponent(game.id + '.exe')}&resolution=406x365&controls=${game.control}`)
   root.innerHTML = `

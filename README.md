@@ -21,7 +21,7 @@ npm ci
 npm run dev
 ```
 
-開啟 Vite 提示的 `http://127.0.0.1:5173/kutar-web-games/`。首次載入遊戲會下載約 37 MB 的 Wine 執行環境；之後可使用瀏覽器快取。
+開啟 Vite 提示的 `http://127.0.0.1:5173/kutar-web-games/`。主選單會預先下載約 37 MB 的 Wine 執行環境；遊戲封裝與執行環境會並行載入，並重用選單已開始的下載。瀏覽器快取可供之後的遊戲使用。模擬器啟動及原作開場動畫仍需時間。
 
 ```powershell
 npm run build

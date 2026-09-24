@@ -18,6 +18,7 @@ a { color: inherit; }
 .hero h1 span { display: block; font-size: .5em; letter-spacing: .015em; margin-top: 14px; }
 .hero-copy { max-width: 560px; line-height: 1.8; font-size: 15px; color: #e4f1ff; }
 .first-release { max-width: 650px; margin: 12px 0 0; padding: 10px 13px; border: 1px solid #ffffff66; border-radius: 8px; background: #ffffff18; color: #fff4d8; font-size: 12px; line-height: 1.7; }
+.runtime-status { margin: 10px 0 0; color: #bde8dc; font-size: 12px; font-weight: 700; }
 .hero-jump { display: inline-flex; align-items: center; gap: 22px; margin-top: 10px; padding: 10px 19px; border-radius: 999px; background: #fff; color: #254c7e; font-weight: 900; font-size: 13px; text-decoration: none; }
 .hero-jump:hover { background: #f6d387; }
 .hero-cats { position: absolute; right: 23%; bottom: 50px; transform: rotate(-17deg); color: #a8d9db; font-size: 26px; }

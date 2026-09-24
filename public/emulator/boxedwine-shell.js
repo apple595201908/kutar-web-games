@@ -332,16 +332,21 @@
     		return contents;
         }
         function loadFile(pathPrefix, filename, callback) {
-			fetch(pathPrefix + filename, { method: 'GET' }).then(function(response) {
-      			if (response.status === 200) {
-					response.arrayBuffer().then(function(buffer) {
-						let arr = new Uint8Array(buffer);
-						callback(arr);
-    				});
-      			} else {
-      				console.log('Unable to load:' + filename + ' error:' + response.status);
-      			}
-			});
+			let path = pathPrefix + filename;
+			let preloaded;
+			try {
+				if (window.parent !== window && window.parent.__kutarTakePreload) {
+					preloaded = window.parent.__kutarTakePreload(new URL(path, location.href).href);
+					if (preloaded) console.log('Using preloaded file: ' + filename);
+				}
+			} catch (e) { /* Direct or cross-origin emulator launch. */ }
+			let download = () => fetch(path, { method: 'GET' }).then(response => {
+				if (!response.ok) throw new Error('Unable to load: ' + filename + ' error: ' + response.status);
+				return response.arrayBuffer();
+			}).then(buffer => new Uint8Array(buffer));
+			(preloaded ? Promise.resolve(preloaded).then(buffer => new Uint8Array(buffer)).catch(download) : download())
+				.then(callback)
+				.catch(error => console.error(error));
 		}
         function buildAppFileSystem(callback) {
             if(Config.appPayload.length > 0){
@@ -463,13 +468,22 @@
             	spinnerElement.hidden = false;
             
 	        	buildExtraFileSystems(() => {
-    	        	buildAppFileSystem(() => {
-    	            	loadFile(Config.locateRootBaseUrl, Config.rootZipFile, (rootZipfileBytes) => {
-    	            	    createFile("/", Config.rootZipFile, rootZipfileBytes);
-                        	buildBrowserFileSystem();
-						});
-                	});
-	        	});
+                    let rootBytes, rootReady = false, appReady = false;
+                    let finish = () => {
+                        if (!rootReady || !appReady) return;
+                        createFile("/", Config.rootZipFile, rootBytes);
+                        buildBrowserFileSystem();
+                    };
+                    loadFile(Config.locateRootBaseUrl, Config.rootZipFile, bytes => {
+                        rootBytes = bytes;
+                        rootReady = true;
+                        finish();
+                    });
+                    buildAppFileSystem(() => {
+                        appReady = true;
+                        finish();
+                    });
+	        });
 	        });
         }
         function getEntriesAsPromise(item, exeFiles, allFiles, firstCall) {
