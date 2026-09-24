@@ -47,6 +47,11 @@ during one round did not visibly empty it. Twelve wrapper clicks paced roughly
 1.4 seconds apart likewise left the bottle unchanged. The failed checks cover
 both fast and slow input; `ikki` remains unverified.
 
+The [BoxedWine input polling option](https://www.boxedwine.org/command-line-arguments/)
+was tested locally at `-pollRate 0` with roughly 400 ms wrapper presses; 15
+clicks during an active round still showed no confirmed change. Both temporary
+settings were reverted.
+
 The emulated Windows title bar and score dialogs render Japanese text as
 mojibake. Setting `LANG=ja_JP.UTF-8` through BoxedWine's `env` parameter did not
 fix the title bar in a browser check. BoxedWine's upstream
