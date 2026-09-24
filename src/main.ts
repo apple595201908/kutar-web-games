@@ -107,7 +107,7 @@ function renderGame(game: Game) {
   preload('emulator/boxedwine.zip')
   preload(`emulator/games/${game.id.toLowerCase()}.zip`)
   document.title = `${game.name}｜Kutar 網頁遊戲大集合`
-  const src = asset(`emulator/boxedwine.html?app=${encodeURIComponent(game.id.toLowerCase())}&p=${encodeURIComponent(game.id + '.exe')}&resolution=406x365&controls=${game.control}`)
+  const src = asset(`emulator/boxedwine.html?v=launch-2&app=${encodeURIComponent(game.id.toLowerCase())}&p=${encodeURIComponent(game.id + '.exe')}&resolution=406x365&controls=${game.control}`)
   root.innerHTML = `
     <main class="play-page">
       <nav class="play-nav"><a class="back-link" href="${escapeHtml(gameUrl().toString())}" data-back>← 返回遊戲選單</a><span>KU<span class="brand-red">T</span>AR / ${escapeHtml(game.original)}</span></nav>
