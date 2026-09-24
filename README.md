@@ -4,9 +4,9 @@
 
 ## 目前進度
 
-20 款執行檔已完成雜湊確認、素材提取和原生參考畫面擷取。20 款在本機 BoxedWine 網頁執行環境都已顯示原版視窗；《ナワトビ》和《フウセン》已確認顯示完整標題，並測試《ナワトビ》的開始、遊玩和失敗後流程。每款的操作、計分與結束條件還需要逐款驗收。因此 GitHub 儲存庫目前維持私人，網站尚未公開。
+20 款執行檔已完成雜湊確認、素材提取和原生參考畫面擷取。20 款在本機 BoxedWine 網頁執行環境都已顯示原版標題與遊玩畫面；部分已看到分數變化、失敗結算和重新開始。各款的已驗證項目及待驗項目記於 [`reference/verification.md`](reference/verification.md)。觸控橋接的多指、左右切換、頁面隱藏釋放等邏輯有自動測試，但仍需在實際手機上驗證。原版節奏與所有遊戲的得分、結束條件尚未逐款通過對照。因此 GitHub 儲存庫目前維持私人，網站尚未公開。
 
-原計畫是以 Canvas 2D 逐款重寫。實測後改用 [BoxedWine 26R1.0](https://github.com/danoon2/Boxedwine/releases/tag/26R1.0) 在瀏覽器內執行原始程式，以保留原版判定、動畫、美術與音效。這仍須確認各款在瀏覽器中的速度、輸入和儲存行為；目前不能宣稱完整 1:1 驗收通過。
+原計畫是以 Canvas 2D 逐款重寫。實測後改用 [BoxedWine 26R1.0](https://github.com/danoon2/Boxedwine/releases/tag/26R1.0) 在瀏覽器內執行原始程式，以保留原版判定、動畫、美術與音效。BoxedWine 網頁版載入和開場速度偏慢；《マニュファクチュア》在測試機約需一分鐘才顯示標題。這仍須確認各款在瀏覽器中的速度、輸入和儲存行為；目前不能宣稱完整 1:1 驗收通過。
 
 ## 本機執行
 
@@ -23,6 +23,7 @@ npm run dev
 
 ```powershell
 npm run build
+npm test
 ```
 
 `dist/` 是靜態網站。遊戲封裝檔 `public/emulator/games/*.zip` 已忽略，不會提交到 Git。`tools/package_games.py` 依 `public/assets/sources.json` 驗證 20 個原始執行檔後，產生可重現的 ZIP 封裝。部署工作流程從私人 GitHub Release 取得封裝檔、再次驗證 SHA-256，再建置並部署網站。只有儲存庫公開時才執行部署工作。
