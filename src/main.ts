@@ -29,7 +29,7 @@ function renderMenu() {
       <div class="hero-inner">
         <p class="eyebrow">THE ORIGINAL 20 MINI GAMES</p>
         <h1>Kutar <span>網頁遊戲大集合</span></h1>
-        <p class="hero-copy">選一款遊戲，直接在瀏覽器裡玩。保留原版 400 × 300 畫面與原作節奏。</p>
+        <p class="hero-copy">選一款遊戲，直接在瀏覽器裡玩。以原版 400 × 300 畫面與美術呈現。</p>
         <a class="hero-jump" href="#games">選擇遊戲 <span aria-hidden="true">↓</span></a>
       </div>
       <div class="hero-cats" aria-hidden="true">●　●　●</div>
@@ -64,7 +64,7 @@ function renderGame(game: Game) {
           <div class="stage" aria-label="${escapeHtml(game.name)} 原版遊戲視窗"><iframe class="game-frame" title="${escapeHtml(game.name)} 遊戲" src="${src}" scrolling="no" allow="autoplay" loading="eager"></iframe><div class="stage-loading" role="status"><span class="loader"></span>正在啟動原版遊戲…</div></div>
           <div class="controls" aria-label="觸控操作">
             <button class="start-button" data-action="start" type="button">▶ 開始 / 重玩</button>
-            ${game.control === 'sides' ? `<div class="side-controls"><button data-action="left" type="button">← 左半邊</button><button data-action="right" type="button">右半邊 →</button></div>` : game.control === 'single' ? `<button class="action-button" data-action="tap" type="button">點按 / 動作</button>` : `<p class="direct-hint">請直接點選遊戲畫面中的目標</p>`}
+            ${game.control === 'sides' ? `<div class="side-controls"><button data-action="left" type="button">← 左半邊</button><button data-action="right" type="button">右半邊 →</button></div>` : game.control === 'single' ? `<button class="action-button" data-action="tap" type="button">${game.id === 'ikki' ? '連點喝奶' : '點按 / 動作'}</button>` : `<p class="direct-hint">請直接點選遊戲畫面中的目標</p>`}
           </div>
         </div>
         <aside class="play-help"><div class="help-card"><p class="eyebrow">HOW TO PLAY</p><h2>操作方式</h2><p>${escapeHtml(game.description)}</p><p>等原版標題畫面出現後，按「開始 / 重玩」或鍵盤 F5。鍵盤與滑鼠可沿用原版操作；手機可點遊戲畫面或下方大按鍵。</p></div><div class="help-card mini"><span>原始畫面</span><strong>400 × 300</strong><span>完整等比例顯示</span></div></aside>
@@ -77,6 +77,8 @@ function renderGame(game: Game) {
   const back = root.querySelector<HTMLAnchorElement>('[data-back]')!
   const controls = root.querySelector<HTMLElement>('.controls')!
   const pointers = new Map<number, string>()
+  const pressedAt = new Map<string, number>()
+  const releaseTimers = new Map<string, number>()
   let readyTimer: number | undefined
   let errorTimer: number | undefined
   let destroyed = false
@@ -89,14 +91,15 @@ function renderGame(game: Game) {
   function getCanvas() {
     try { return frame.contentDocument?.querySelector<HTMLCanvasElement>('#canvas') } catch { return null }
   }
-  function mouse(x: number, y: number, down: boolean) {
+  function mouse(x: number, y: number, button: number, down: boolean) {
     const canvas = getCanvas()
     if (!canvas) return
     const rect = canvas.getBoundingClientRect()
-    const options: MouseEventInit = { bubbles: true, cancelable: true, button: 0, buttons: down ? 1 : 0, clientX: rect.left + x, clientY: rect.top + y, view: frame.contentWindow! }
-    if (down) canvas.dispatchEvent(new MouseEvent('mousemove', { ...options, buttons: 0 }))
+    const buttons = [...new Set(pointers.values())].reduce((mask, name) => mask | (name === 'right' ? 2 : name === 'left' || name === 'tap' ? 1 : 0), 0)
+    const options: MouseEventInit = { bubbles: true, cancelable: true, button, buttons, clientX: rect.left + x, clientY: rect.top + y, view: frame.contentWindow! }
+    if (down) canvas.dispatchEvent(new MouseEvent('mousemove', { ...options, button: -1 }))
     canvas.dispatchEvent(new MouseEvent(down ? 'mousedown' : 'mouseup', options))
-    if (!down) canvas.dispatchEvent(new MouseEvent('click', options))
+    if (!down && button === 0) canvas.dispatchEvent(new MouseEvent('click', options))
   }
   function key(name: string, code: number, down: boolean) {
     const canvas = getCanvas()
@@ -108,14 +111,20 @@ function renderGame(game: Game) {
   }
   function action(name: string, down: boolean) {
     if (name === 'start') { key('F5', 116, down); return }
-    if (name === 'left') { key('ArrowLeft', 37, down); mouse(100, 210, down); return }
-    if (name === 'right') { key('ArrowRight', 39, down); mouse(306, 210, down); return }
-    key(' ', 32, down)
-    mouse(203, 210, down)
+    if (name === 'left') { mouse(100, 210, 0, down); return }
+    if (name === 'right') { mouse(306, 210, 2, down); return }
+    mouse(203, 210, 0, down)
   }
   function releaseAll() {
-    for (const name of new Set(pointers.values())) action(name, false)
+    const names = new Set(pointers.values())
+    for (const [name, timer] of releaseTimers) {
+      window.clearTimeout(timer)
+      names.add(name)
+    }
+    releaseTimers.clear()
+    pressedAt.clear()
     pointers.clear()
+    for (const name of names) action(name, false)
   }
   function pointerDown(event: PointerEvent) {
     const button = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-action]')
@@ -124,16 +133,33 @@ function renderGame(game: Game) {
     button.setPointerCapture(event.pointerId)
     const name = button.dataset.action!
     if (pointers.has(event.pointerId)) return
+    const pending = releaseTimers.get(name)
+    if (pending !== undefined) {
+      window.clearTimeout(pending)
+      releaseTimers.delete(name)
+      action(name, false)
+    }
     const alreadyDown = [...pointers.values()].includes(name)
     pointers.set(event.pointerId, name)
-    if (!alreadyDown) action(name, true)
+    if (!alreadyDown) {
+      pressedAt.set(name, performance.now())
+      action(name, true)
+    }
   }
   function pointerUp(event: PointerEvent) {
     const name = pointers.get(event.pointerId)
     if (!name) return
     event.preventDefault()
     pointers.delete(event.pointerId)
-    if (![...pointers.values()].includes(name)) action(name, false)
+    if ([...pointers.values()].includes(name)) return
+    const elapsed = performance.now() - (pressedAt.get(name) ?? 0)
+    const delay = event.type === 'pointercancel' ? 0 : Math.max(0, 120 - elapsed)
+    pressedAt.delete(name)
+    if (!delay) action(name, false)
+    else releaseTimers.set(name, window.setTimeout(() => {
+      releaseTimers.delete(name)
+      if (!destroyed) action(name, false)
+    }, delay))
   }
   function visibility() { if (document.hidden) releaseAll() }
   function onBack(event: MouseEvent) { event.preventDefault(); navigate() }

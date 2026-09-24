@@ -10,7 +10,7 @@ function harness(mode = 'sides') {
   const events = []
   const canvas = {
     addEventListener(name, handler) { canvasListeners.set(name, handler) },
-    dispatchEvent(event) { events.push({ type: event.type, key: event.key, x: event.clientX }) },
+    dispatchEvent(event) { events.push({ type: event.type, button: event.button, buttons: event.buttons, x: event.clientX }) },
     getBoundingClientRect() { return { left: 0, top: 0, right: 406, bottom: 365, width: 406, height: 365 } },
   }
   const document = {
@@ -41,8 +41,8 @@ describe('touch bridge', () => {
     fire('touchstart', [right], [left, right])
     fire('touchend', [left], [right])
     fire('touchend', [right], [])
-    expect(events.filter(event => event.type.startsWith('key')).map(event => `${event.type}:${event.key}`)).toEqual([
-      'keydown:ArrowLeft', 'keydown:ArrowRight', 'keyup:ArrowLeft', 'keyup:ArrowRight',
+    expect(events.filter(event => event.type === 'mousedown' || event.type === 'mouseup').map(event => `${event.type}:${event.button}`)).toEqual([
+      'mousedown:0', 'mousedown:2', 'mouseup:0', 'mouseup:2',
     ])
     expect(events.filter(event => event.type === 'mousedown')).toHaveLength(2)
     expect(events.filter(event => event.type === 'mouseup')).toHaveLength(2)
@@ -50,26 +50,43 @@ describe('touch bridge', () => {
 
   it('does not treat the original toolbar as a directional play area', () => {
     const { events, touch, fire } = harness()
-    fire('touchstart', [touch(1, 25, 43)])
-    expect(events.map(event => event.type)).toEqual(['mousemove', 'mousedown'])
+    const point = touch(1, 25, 43)
+    fire('touchstart', [point])
+    fire('touchend', [point], [])
+    expect(events.map(event => event.type)).toEqual(['mousemove', 'mousedown', 'mouseup', 'click'])
+    expect(events[1].button).toBe(0)
   })
 
   it('switches direction when a finger crosses the middle', () => {
     const { events, touch, fire } = harness()
     fire('touchstart', [touch(1, 80, 200)])
     fire('touchmove', [touch(1, 320, 200)])
-    expect(events.filter(event => event.type.startsWith('key')).map(event => `${event.type}:${event.key}`)).toEqual([
-      'keydown:ArrowLeft', 'keyup:ArrowLeft', 'keydown:ArrowRight',
+    expect(events.filter(event => event.type === 'mousedown' || event.type === 'mouseup').map(event => `${event.type}:${event.button}`)).toEqual([
+      'mousedown:0', 'mouseup:0', 'mousedown:2',
     ])
   })
 
   it('releases held input when the page becomes hidden', () => {
     const { document, documentListeners, events, touch, fire } = harness()
     fire('touchstart', [touch(1, 80, 200)])
+    fire('touchstart', [touch(2, 320, 200)])
     document.hidden = true
     documentListeners.get('visibilitychange')()
-    expect(events.at(-2).type).toBe('keyup')
-    expect(events.at(-1).type).toBe('mouseup')
+    expect(events.filter(event => event.type === 'mouseup').map(event => event.button)).toEqual([0, 2])
+    expect(events.some(event => event.type === 'click')).toBe(false)
+  })
+
+  it('keeps a side held until its last finger lifts', () => {
+    const { events, touch, fire } = harness()
+    const first = touch(1, 80, 200)
+    const second = touch(2, 90, 200)
+    fire('touchstart', [first], [first])
+    fire('touchstart', [second], [first, second])
+    fire('touchend', [first], [second])
+    expect(events.filter(event => event.type === 'mousedown')).toHaveLength(1)
+    expect(events.filter(event => event.type === 'mouseup')).toHaveLength(0)
+    fire('touchend', [second], [])
+    expect(events.filter(event => event.type === 'mouseup')).toHaveLength(1)
   })
 
   it('maps a single-button game touch to mouse without direction keys', () => {
